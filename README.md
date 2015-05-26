@@ -17,16 +17,22 @@
 * Users should be able to meet up with other users in the area using 'meetup' button.
 
 #### Profile
-- Name
+- First Name
+- Last Name
 - Email
+- Password
+- Location
 - Picture
 - Github
 - LinkedIn
 - Facebook
-- Location Button
-- Skills
+- Skill - Primary
+- Skill - Secondary
 - Quotes
+- Bio
 - Links to other projects / personal websites
+
+- Location Button*
 
 #### Feed
 - Posts with name/username with thumbnail, with link to profile
@@ -42,3 +48,4 @@
 
 #### ERD
 ![ERD Diagram](ERD.jpg)
+
