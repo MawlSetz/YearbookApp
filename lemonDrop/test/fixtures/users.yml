@@ -4,6 +4,8 @@ one:
   first: MyText
   last: MyText
   email: MyText
+  password_digest: MyText
+  location: MyString
   picture: MyString
   github: MyString
   linkedin: MyString
@@ -18,6 +20,8 @@ two:
   first: MyText
   last: MyText
   email: MyText
+  password_digest: MyText
+  location: MyString
   picture: MyString
   github: MyString
   linkedin: MyString

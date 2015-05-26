@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526192137) do
+ActiveRecord::Schema.define(version: 20150526195644) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20150526192137) do
     t.text     "first"
     t.text     "last"
     t.text     "email"
+    t.text     "password_digest"
+    t.string   "location"
     t.string   "picture"
     t.string   "github"
     t.string   "linkedin"
