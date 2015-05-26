@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
-  root 'sessions#new'
+  root 'posts#index'
   resources :users
   resources :posts
   resources :comments
 
   get "/login" => "sessions#new"
-  get "/" => "posts#index"
+  
 
   resource :session, only: [:create, :destroy]
   

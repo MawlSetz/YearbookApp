@@ -1,1 +1,14 @@
-<h1>Hello lemons(Bitches)</h1>
+<h1>Sign Up: </h1>
+<%= form_for(@user) do |f| %>
+
+<%= if @user.errors.any? %>
+  <div id="error_explanation">
+    <p><%= pluralize(@user.errors.count, "error") %>prohibied this user from from being saved.</p>
+    <ul>
+      <% @user.errorsfull_messages.each do |msg| %>
+
+      <li style="color: red"><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+

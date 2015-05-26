@@ -1,4 +1,12 @@
 class PostsController < ApplicationController
+
+  def index
+    if session[:user_id]
+      render @posts
+    else
+      redirect_to login_path
+    end
+  end
   
   def create
     @post = Post.create(post_params)
