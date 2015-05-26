@@ -30,7 +30,6 @@
 
 #### Feed
 - Posts with name/username with thumbnail, with link to profile
-- Post titles
 - Post contents
 - Post tags
 - Post comments
@@ -38,5 +37,8 @@
 - Text area for new post
 - Sort by button
 - Comment button
-- Click to expand post contents
+- Click to show post contents
 - Click to expand post comments
+
+#### ERD
+![ERD Diagram](ERD.jpg)
