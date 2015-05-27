@@ -14,5 +14,8 @@ User.create(first: "Aung", last: "Barteaux", email: "aungwaran@gmail.com", passw
 User.create(first: "Paul", last: "Fielek", email: "paulfielek@gmail.com", password: "password", location: "New York", picture: "http://www.placekitten.com/500/600", github: "https://github.com/polskais1", linkedin: "https://www.linkedin.com/in/paulfielek", facebook: "https://www.facebook.com/paulfielek", quote: "Quote Something", bio: "Pour-over authentic twee, narwhal mumblecore meditation hella pickled 90's. Banjo umami sriracha leggings XOXO. Small batch organic Kickstarter, McSweeney's YOLO mumblecore iPhone. Leggings Shoreditch meh cardigan, viral tote bag gastropub VHS pug meggings messenger bag you probably haven't heard of them bitters Echo Park. Flexitarian High Life next level, you probably haven't heard of them Austin butcher gluten-free retro farm-to-table art party +1. Actually tousled Bushwick readymade, hoodie food truck fingerstache cliche Austin vinyl PBR Intelligentsia. Ugh farm-to-table 3 wolf moon, narwhal Vice cray normcore.", skill_primary: "Node", skill_secondary: "Rails", personal_link: "http://www.paulfielek.com")
 
 Post.create(user_id: 1, vote: 2, content: "This is some content", tags: "First")
+Post.create(user_id: 1, vote: 2, content: "This is some content two", tags: "Second")
+Post.create(user_id: 1, vote: 2, content: "This is some content three", tags: "Third")
+Post.create(user_id: 1, vote: 2, content: "This is some content Four", tags: "Four")
 
 Comment.create(post_id: 1, vote: 1, content: "This post is awesome", user_id: 1)

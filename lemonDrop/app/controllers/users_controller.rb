@@ -2,7 +2,10 @@ class UsersController < ApplicationController
   before_action :authenticate, except: [:new, :create]
   # User profile page
   def show
+    #binding.pry
+    # @posts = Post.find_by(user_id: params[:id])
     @user = User.find(params[:id])
+    @posts = Post.where({user_id: params[:id]}).limit(3).reverse
   end
   # Create a new user profile and login
   def create

@@ -1,1 +1,29 @@
+<% if @user.bio.blank? %>
+  <p>Welcome to Lemon Drop. Please don't forget to fill out your profile so other can stay connected with you.</p>
+<% end %>
+
+<h2>Profile</h2>
+<img src="<%= @user.picture %>"><br>
 <%= @user.first %>
+<%= @user.last %><br>
+<a href="<%= @user.email %>">Email</a><br>
+<%= @user.location %><br>
+<a href="<%= @user.personal_link %>">Personal Link</a><br>
+<a href="<%= @user.github %>">GitHub</a><br>
+<a href="<%= @user.linkedin %>">LinkedIn</a><br>
+<a href="<%= @user.facebook %>">Facebook</a><br>
+<%= @user.quote %><br>
+<%= @user.bio %><br>
+<%= @user.skill_primary %><br>
+<%= @user.skill_secondary %><br>
+<form action="/users/<%= @user.id %>/edit" method="PUT">
+<button>Edit</button>
+
+<h2>Latest Post</h2>
+<% @posts.each do |p| %>
+  <i>Posted <%= time_ago_in_words(p.created_at) %> ago.</i><br>
+  <%= p.content %><br>
+  <%= p.tags %><br>
+  vote: <%= p.vote %><br><br>
+<% end %>
+
