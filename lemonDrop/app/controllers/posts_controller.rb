@@ -1,13 +1,14 @@
 class PostsController < ApplicationController
-
+  # Load all posts into home page
   def index
     if session[:user_id]
       @posts = Post.all
     else
+      # If user is not signed in, redirect to sign in page
       redirect_to login_path
     end
   end
-  
+  # Create a new post
   def create
     @post = Post.create(post_params)
     if @post.save
