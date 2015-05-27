@@ -1,14 +1,53 @@
-<h1>Sign Up: </h1>
-<%= form_for(@user) do |f| %>
+<h4>Sign In</h4>
+<form action="/session" method="POST">
+	<div>
+		<label for="email">Email:</label>
+		<input name="email">
+	</div>
+	<div>
+		<label for="password">Password:</label>
+		<input name="password" type="password">
+      	<input name="authenticity_token" value="<%= form_authenticity_token() %>" type="hidden">
+  	</div>
+      	<br><br>
+    <div>
+        <button>Log In</button>
+    </div>
+</form>
 
-<%= if @user.errors.any? %>
-  <div id="error_explanation">
-    <p><%= pluralize(@user.errors.count, "error") %>prohibied this user from from being saved.</p>
-    <ul>
-      <% @user.errorsfull_messages.each do |msg| %>
+<br><br>
+<h3>Sign Up: </h3>
+<%= form_for @user do |f| %>
 
-      <li style="color: red"><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
+	<% if @user.errors.any? %>
+	  <div id="error_explanation">
+	    <p><%= pluralize(@user.errors.count, "error") %>prohibied this user from from being saved.</p>
+	    <ul>
+	      <% @user.errors.full_messages.each do |msg| %>
 
+	      <li style="color: red"><%= msg %></li>
+	      <% end %>
+	    </ul>
+	    <% end %>
+	  </div>
+
+	<div class="signup">
+			<%= f.label :first %>
+			<%= f.text_field :first, placeholder: 'First name' %>
+			<br><br>
+			
+			<%= f.label :last %>
+			<%= f.text_field :last, placeholder: 'Last name' %>
+			<br><br>
+			<%= f.label :email %>
+			<%= f.email_field :email, placeholder: 'Email' %>
+			<br><br>
+			<%= f.label :password %>
+			<%= f.password_field :password, placeholder: 'Password' %>
+			<br><br>
+			<%= f.label :password_confirmation %>
+			<%= f.password_field :password_confirmation, placeholder: 'Password Confirmation' %>
+			<br><br>
+			<%= f.submit %>
+		<% end %>
+	</div>

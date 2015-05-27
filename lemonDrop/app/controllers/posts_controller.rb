@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 
   def index
     if session[:user_id]
-      render @posts
+      @posts = Post.all
     else
       redirect_to login_path
     end

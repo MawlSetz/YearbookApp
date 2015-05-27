@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
+    puts "SLDFJALSJF TEST"
     params.require(:user).permit(:first, :last, :email, :password, :password_confirmation)
   end
 
