@@ -3,6 +3,18 @@ class UsersController < ApplicationController
   # User profile page
   def show
     @user = User.find(params[:id])
+    keys = Rails.application.secrets
+    client = Twitter::REST::Client.new do |config|
+        config.consumer_key = keys[:twitter_key]
+        config.consumer_secret = keys[:twitter_secret]
+        config.access_token = keys[:access_token]
+        config.access_token_secret = keys[:access_secret]
+      end
+      puts "searching"
+      client.user_timeline('cnn').map do |tweet|
+        puts tweet.text
+      end
+
   end
   # Create a new user profile and login
   def create
