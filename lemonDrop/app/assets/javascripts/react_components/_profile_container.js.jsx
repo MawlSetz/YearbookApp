@@ -26,10 +26,15 @@ var ProfileContainer = React.createClass ({
   // This renders the html with the provided updates
   render: function() {
     return (
-      <div className = "profile">
-        <UserInfo user={this.state.user} form={this.state.form} />
+      <div>
+        <div className = "profile">
+          <UserInfo user={this.state.user} form={this.state.form} />
+        </div>
+        <div>
+          <UserTweets tweets={this.state.tweets} />
+        </div>
       </div>
-    )
+    );
   }
 });
 
@@ -55,7 +60,35 @@ var UserInfo = React.createClass({
           <p>{this.props.user.bio}</p>
         </div>
       </div>
-    )
+    );
+  }
+});
+
+//rendering recent tweets from user in session
+var UserTweets = React.createClass({
+  render: function() {
+    tweetNodes = this.props.tweets.map(function(tweet){
+      
+      return <Tweet tweet={tweet} />
+      
+    });
+      
+    return (
+      <div>
+        {tweetNodes}
+      </div>
+    );
+  }
+});
+
+var Tweet = React.createClass({
+  render: function() {
+    return (
+      <div>
+        <p>{this.props.tweet.text}</p>
+        <i>{this.props.tweet.created_at}</i>
+      </div>
+    );
   }
 });
 

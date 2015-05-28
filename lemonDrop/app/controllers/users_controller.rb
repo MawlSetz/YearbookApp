@@ -17,16 +17,25 @@ class UsersController < ApplicationController
       config.access_token = keys[:access_token]
       config.access_token_secret = keys[:access_secret]
     end
+
+    @tweets = client.user_timeline(@user[:twitter_handle]).take(3).each do |tweet|
+      tweet.created_at
+      tweet.text
+    end
+
     # passing through the information about the user and also our authenticity token and form
     @controller = {
       :user => @user,
+      :tweets => @tweets,
       :form => {
         :action => user_path,
         :csrf_param => request_forgery_protection_token,
         :csrf_token => form_authenticity_token
       }
     }
+
   end
+
   # Create a new user profile and login
   def create
     @user = User.create(user_params)
