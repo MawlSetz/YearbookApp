@@ -1,4 +1,4 @@
-##Lemon Drops 
+##Lemon Drop
 
 #### SPEC
 1. Users should be able to log in.
@@ -31,7 +31,6 @@
 - Quotes
 - Bio
 - Links to other projects / personal websites
-
 - Location Button*
 
 #### Feed
@@ -46,7 +45,15 @@
 - Click to show post contents
 - Click to expand post comments
 
+#### Collaborators
+- Molly Sezter
+- Christopher Black
+- Paul Fielek
+- Aung Barteaux
+- Meir Snyder
+
+[Trello Page](https://trello.com/b/dkSXDrsB/group-project)
+
 #### ERD
 ![ERD Diagram](ERD.jpg)
-[Trello Page](https://trello.com/b/dkSXDrsB/group-project)
 
