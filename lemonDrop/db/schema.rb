@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526195644) do
+ActiveRecord::Schema.define(version: 20150528145314) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20150526195644) do
     t.string   "personal_link"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "twitter_handle"
   end
 
 end
