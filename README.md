@@ -48,4 +48,5 @@
 
 #### ERD
 ![ERD Diagram](ERD.jpg)
+[Trello Page](https://trello.com/b/dkSXDrsB/group-project)
 
