@@ -1,13 +1,18 @@
+# This controls all routing for our app
 Rails.application.routes.draw do
 
+  # Sends the root page, or "/", to our posts erb
+  # Resources creating get, put, and delete routes for our users, posts, and comments  
   root 'posts#index'
   resources :users
   resources :posts
   resources :comments
 
+  # When we go to /login we will be directed to where we begin session
   get "/login" => "sessions#new"
   
 
+  # This allows us to create and logout of a session
   resource :session, only: [:create, :destroy]
   
   # The priority is based upon order of creation: first created -> highest priority.

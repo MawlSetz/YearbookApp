@@ -1,3 +1,4 @@
+# Pushes everything from applicationController to UsersController
 class UsersController < ApplicationController
   before_action :authenticate, except: [:new, :create]
   # User profile page
@@ -5,14 +6,18 @@ class UsersController < ApplicationController
     #binding.pry
     # @posts = Post.find_by(user_id: params[:id])
     @user = User.find(params[:id])
+    # Limits three posts and shows most recent
     @posts = Post.where({user_id: params[:id]}).limit(3).reverse
+    # This allows us to use Oath authenication
     keys = Rails.application.secrets
+    # Refencing the secrets
     client = Twitter::REST::Client.new do |config|
       config.consumer_key = keys[:twitter_key]
       config.consumer_secret = keys[:twitter_secret]
       config.access_token = keys[:access_token]
       config.access_token_secret = keys[:access_secret]
     end
+    # passing through the information about the user and also our authenticity token and form
     @controller = {
       :user => @user,
       :form => {
@@ -34,9 +39,9 @@ class UsersController < ApplicationController
     end
   end
 
+  # protects things being entered into the database
   private
   def user_params
-    puts "SLDFJALSJF TEST"
     params.require(:user).permit(:first, :last, :email, :password, :password_confirmation)
   end
 

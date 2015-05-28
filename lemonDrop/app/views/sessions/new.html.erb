@@ -1,3 +1,5 @@
+<!-- user sign in -->
+<!-- alert if user has not filled out the required parameters -->
 <h4>Sign In</h4>
 <p style="color: red"><%= flash[:error] %></p>
 <form action="/session" method="POST">
@@ -7,6 +9,7 @@
 	</div>
 	<div>
 		<label for="password">Password:</label>
+		<!-- use of authenticity token to protect user password -->
 		<input name="password" type="password">
       	<input name="authenticity_token" value="<%= form_authenticity_token() %>" type="hidden">
   	</div>
@@ -15,9 +18,10 @@
         <button>Log In</button>
     </div>
 </form>
-
+<!-- sign up form -->
 <br><br>
 <h3>Sign Up: </h3>
+<!-- logic preventing bad passwords from passing -->
 <%= form_for @user do |f| %>
 
 	<% if @user.errors.any? %>
@@ -32,6 +36,7 @@
 	    <% end %>
 	  </div>
 
+	<!-- sign up form -->
 	<div class="signup">
 			<%= f.label :first %>
 			<%= f.text_field :first, placeholder: 'First name' %>

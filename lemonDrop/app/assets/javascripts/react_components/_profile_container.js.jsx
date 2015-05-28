@@ -1,21 +1,29 @@
+//This is containing everything
 var ProfileContainer = React.createClass ({
+  //This initializing base state. State is reacts way of knowing when it needs to render
   getInitialState: function(){
+    //Feeding our page all updates of current state. Props is properties of the element. Element is the ProfileContainer 
     return JSON.parse(this.props.controller);
   },
 
+
+  //this is where we're sending request to server at user#update via form data
+  //ajax is a function that takes an object
+  // Triggers the change of the information via render function
+  // Binds the element to the function so it knows what to set the state to.
+
   handleUserUpdate: function(formData, action){
-    //ajax is a function that takes an object
     $.ajax({
       data: formData,
-      //this is where we're sending request to server
       url: action,
       type: "PUT",
       success: function(data){
         this.setState({user: data})
-      }.bind(this)
+        }.bind(this)
     });
   },
 
+  // This renders the html with the provided updates
   render: function() {
     return (
       <div className = "profile">
@@ -25,6 +33,7 @@ var ProfileContainer = React.createClass ({
   }
 });
 
+// This is creating our information and making it all a property
 var UserInfo = React.createClass({
   render: function() {
     return (
@@ -50,6 +59,7 @@ var UserInfo = React.createClass({
   }
 });
 
+// This is linking the properties as an action which is an argument in handleUserUpdate
 var UserFields = React.createClass({
   render: function(){
     return (

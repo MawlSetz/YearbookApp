@@ -1,3 +1,4 @@
+# Pushes everything from applicationController to PostsController
 class PostsController < ApplicationController
   # Load all posts into home page
   def index
@@ -18,6 +19,7 @@ class PostsController < ApplicationController
     end
   end
 
+# protects things being entered into the database
   private
     def post_params
       params.require(:post).permit(:user_id, :vote, :content, :tags)
