@@ -3,7 +3,14 @@ class PostsController < ApplicationController
   # Load all posts into home page
   def index
     if session[:user_id]
-      @posts = Post.all
+      @controller = {:posts => Post.all,
+      :session => session[:user_id], 
+      :form => {
+        :action => posts_path, 
+        :csrf_param => request_forgery_protection_token,
+        :csrf_token => form_authenticity_token
+      }
+      }
     else
       # If user is not signed in, redirect to sign in page
       redirect_to login_path
@@ -18,6 +25,16 @@ class PostsController < ApplicationController
       #render json
     end
   end
+
+  def destroy
+    @post = Post.find(params[:id])
+    if session[:user_id] == @post.user_id 
+      @post.destroy
+      render :json => Post.all
+    end
+  end
+
+    
 
 # protects things being entered into the database
   private
