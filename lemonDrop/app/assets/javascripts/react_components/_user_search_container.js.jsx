@@ -1,13 +1,33 @@
 var UserSearchContainer = React.createClass({
 	getInitialState: function(){
-		debugger
-		return JSON.parse(this.props.userSearch)
+		return JSON.parse(this.props.users)
 	},
+
+	search: function(query) {
+		$.ajax({
+			data: query,
+			type: "GET",
+			url: "/users",
+			success: function(data) {
+				this.setState({users: data.users})
+			}.bind(this)
+		})
+	},
+
+	resetSearch: function() {
+		$.ajax({
+			type: "GET",
+			url: "/users", 
+			success: function(data) {
+				this.setState({users: data.users})
+			}.bind(this)
+		})
+	},
+
 	render: function(){
-		debugger
-		return(
+		return (
 			<div id="user-search">
-				<SearchBar />
+				<SearchBar users={this.state.users} search={this.search} resetSearch={this.resetSearch} />
 				<UserList users={this.state.users} /> 
 			</div>
 		)
@@ -20,17 +40,24 @@ var SearchBar = React.createClass({
 	},
 	handleChange: function(event){
 		this.setState({value: event.target.value})
+		if (event.target.value.length == 0) {
+			this.props.resetSearch()
+		}
+		else{
+			this.props.search($(this.getDOMNode()).serialize())
+		}
 	},
 	render: function(){
 		var value = this.state.value
-		return <input type="text" value={value} onChange={this.handleChange} />
-	}
+		return <input type="text" name="search" value={value} onChange={this.handleChange} />
+	},
+
 });
 
 var UserList = React.createClass({
 	render: function(){
-		userNodes = this.props.users.map(function(user){
-			<User user={user} />
+		var userNodes = this.props.users.map(function(user){
+			return <User user={user} />
 		})
 		return (
 			<div>{userNodes}</div>

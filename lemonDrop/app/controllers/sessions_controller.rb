@@ -1,3 +1,4 @@
+# Pushes everything from applicationController to sessionsController
 class SessionsController < ApplicationController
   # Sign in page
   def new

@@ -3,8 +3,17 @@ class UsersController < ApplicationController
   before_action :authenticate, except: [:new, :create]
   
   def index
-    @users = User.all
-    @users = @users.sample(6)
+    puts params
+    if params[:search]
+      puts "SEARCHING"
+      @users = User.where("first LIKE ? OR last LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+      render :json => {:users => @users}
+    else 
+      puts "RESETING"
+      @users = User.all
+      @users = @users.sample(6)
+      render :json => {:users => @users}
+    end
   end
 
   # User profile page
@@ -50,8 +59,7 @@ class UsersController < ApplicationController
       }
     end
       @users = User.all
-      @users = @users.sample(6)
-      puts @users
+      @users =  { :users => @users.sample(6)}
   end
 
   # Create a new user profile and login
