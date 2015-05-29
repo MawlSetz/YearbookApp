@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     end
 
     @tweets = client.user_timeline(@user[:twitter_handle]).take(3).each do |tweet|
+      tweet.created_at
       tweet.text
     end
 

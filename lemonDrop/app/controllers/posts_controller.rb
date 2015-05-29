@@ -3,13 +3,14 @@ class PostsController < ApplicationController
   # Load all posts into home page
   def index
     if session[:user_id]
-      @controller = {:posts => Post.all,
-      :session => session[:user_id], 
-      :form => {
-        :action => posts_path, 
-        :csrf_param => request_forgery_protection_token,
-        :csrf_token => form_authenticity_token
-      }
+      @controller = {
+        :posts => Post.all,
+        :session => session[:user_id], 
+        :form => {
+          :action => posts_path, 
+          :csrf_param => request_forgery_protection_token,
+          :csrf_token => form_authenticity_token
+        }
       }
     else
       # If user is not signed in, redirect to sign in page
@@ -18,11 +19,11 @@ class PostsController < ApplicationController
   end
   # Create a new post
   def create
-    @post = Post.create(post_params)
+    @post = Post.create(user_id: session[:user_id], content: post_params[:content], tags: post_params[:tags])
     if @post.save
-      #render json
+      render :json => Post.all
     else
-      #render json
+      redirect_to posts
     end
   end
 
