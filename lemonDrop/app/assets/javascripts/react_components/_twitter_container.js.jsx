@@ -11,13 +11,11 @@ var TwitterContainer = React.createClass ({
 		);
 	}
 });
-
+// shows the tweets of appropriate person
 var UserTweets = React.createClass({
 	render: function() {
 		tweetNodes = this.props.tweets.map(function(tweet){
-
 			return <Tweet tweet={tweet} />
-
 		});
 
 		return (
@@ -27,7 +25,7 @@ var UserTweets = React.createClass({
 			);
 	}
 });
-
+// gets tweet
 var Tweet = React.createClass({
 	render: function() {
 		return (

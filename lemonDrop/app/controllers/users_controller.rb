@@ -10,15 +10,16 @@ class UsersController < ApplicationController
     @posts = Post.where({user_id: params[:id]}).limit(3).reverse
     # This allows us to use Oath authenication
     keys = Rails.application.secrets
-    # Refencing the secrets
+    # Refencing the secrets for twitter API
     @client = Twitter::REST::Client.new do |config|
       config.consumer_key = keys[:twitter_key]
       config.consumer_secret = keys[:twitter_secret]
       config.access_token = keys[:access_token]
       config.access_token_secret = keys[:access_secret]
     end
-
-    @tweets = client.user_timeline(@user[:twitter_handle]).take(3).each do |tweet|
+    # passing appropriate tweets to user page
+    @tweets = @client.user_timeline(@user[:twitter_handle]).take(3).each do |tweet|
+      tweet.created_at
       tweet.text
     end
 
@@ -26,6 +27,7 @@ class UsersController < ApplicationController
     if request.xhr?
       @controller = {
         :user => @user,
+        :tweets => @tweets,
         :form => {
           :action => user_path,
           :csrf_param => request_forgery_protection_token,
@@ -35,7 +37,9 @@ class UsersController < ApplicationController
       render :json => @controller
     else
       @controller = {
-        :user => @user, :form => {:action => user_path}
+        :user => @user,
+        :form => {:action => user_path},
+        :tweets => @tweets
       }
     end
   end

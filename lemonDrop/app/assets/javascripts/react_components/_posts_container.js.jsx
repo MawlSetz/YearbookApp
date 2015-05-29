@@ -1,6 +1,6 @@
 
 var PostsContainer = React.createClass ({
-
+	// sets initial state
 	getInitialState: function(){
 		return JSON.parse(this.props.controller);
 	},
@@ -15,7 +15,7 @@ var PostsContainer = React.createClass ({
 			}.bind(this)
 		});
 	},
-
+	// sends a call to posts#delete
 	handlePostDelete: function(formData, action){
 		$.ajax({
 			data: formData,
@@ -26,7 +26,7 @@ var PostsContainer = React.createClass ({
 			}.bind(this)
 		});
 	},
-
+	// renders posts 
 	render: function() {
 		return (
 			<div className = "posts">
@@ -35,7 +35,7 @@ var PostsContainer = React.createClass ({
 			)
 	}
 });
-
+// loops through posts one by one and creates an object with all post divs
 var PostInfo = React.createClass({
 	render: function() {
 		var postNodes = this.props.posts.map(function(post){
@@ -52,7 +52,7 @@ var PostInfo = React.createClass({
 		)
 	}
 });
-
+// post fields
 var PostFields = React.createClass({
 	render: function() {
 		return (
@@ -81,7 +81,7 @@ var PostFields = React.createClass({
 		)
 	}
 });
-
+// form for delete 
 var PostDeleteForm = React.createClass({
 	handleDelete: function(event) {
 		event.preventDefault();
@@ -101,7 +101,7 @@ var PostDeleteForm = React.createClass({
 		);
 	}
 });
-
+// renders individual posts
 var Posts = React.createClass({
 	render: function() {
 		return (
@@ -114,7 +114,7 @@ var Posts = React.createClass({
 		);
 	}
 });
-
+// when logged in, able to delete
 var PostsWithDelete = React.createClass({
 	render: function() {
 		return (
