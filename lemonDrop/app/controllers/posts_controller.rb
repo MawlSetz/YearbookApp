@@ -7,7 +7,7 @@ class PostsController < ApplicationController
       @posts = Post.where("tags LIKE ?", "%#{params[:search]}%")
       render :json => {:posts => @posts}
     end
-
+    
     if session[:user_id]
       @controller = {
         :posts => Post.all,

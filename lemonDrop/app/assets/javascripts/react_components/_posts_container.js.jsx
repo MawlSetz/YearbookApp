@@ -5,18 +5,16 @@ var PostsContainer = React.createClass ({
 		return JSON.parse(this.props.controller);
 	},
 
-
 	handleTagSearch: function(query){
-		
-	    $.ajax({
-	      data: query,
-	      url: "/posts",
-	      type: "GET",
-	      success: function(data){
-	        this.setState({posts: data.posts});
-	      }.bind(this)
-	    });
-	  },
+    $.ajax({
+      data: query,
+      url: "/posts",
+      type: "GET",
+      success: function(data){
+        this.setState({posts: data.posts});
+      }.bind(this)
+    });
+  },
 
 	// sends a call to posts#delete
 	handlePostDelete: function(formData, action){

@@ -4,16 +4,27 @@ class UsersController < ApplicationController
   
   def index
     puts params
+    # if params[:skill_search]
+    #   @users = User.where("skill_primary LIKE ? OR skill_secondary LIKE ?", "%#{params[:skill_search]}%", "%#{params[:skill_search]}%")
+    #   render :json => {:users => @users}
+    # end
+
     if params[:search]
       puts "SEARCHING"
       @users = User.where("first LIKE ? OR last LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
       render :json => {:users => @users}
+
+    elsif params[:skill_search]
+      @users = User.where("skill_primary LIKE ? OR skill_secondary LIKE ?", "%#{params[:skill_search]}%", "%#{params[:skill_search]}%")
+      render :json => {:users => @users}
+
     else 
       puts "RESETING"
       @users = User.all
       @users = @users.sample(6)
       render :json => {:users => @users}
     end
+
   end
 
   # User profile page
