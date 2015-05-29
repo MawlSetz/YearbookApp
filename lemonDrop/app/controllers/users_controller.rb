@@ -1,6 +1,12 @@
 # Pushes everything from applicationController to UsersController
 class UsersController < ApplicationController
   before_action :authenticate, except: [:new, :create]
+  
+  def index
+    @users = User.all
+    @users = @users.sample(6)
+  end
+
   # User profile page
   def show 
     @user = User.find(params[:id])
@@ -43,6 +49,9 @@ class UsersController < ApplicationController
         :session => @session
       }
     end
+      @users = User.all
+      @users = @users.sample(6)
+      puts @users
   end
 
   # Create a new user profile and login
