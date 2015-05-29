@@ -2,9 +2,7 @@
 class UsersController < ApplicationController
   before_action :authenticate, except: [:new, :create]
   # User profile page
-  def show
-    #binding.pry
-    # @posts = Post.find_by(user_id: params[:id])
+  def show 
     @user = User.find(params[:id])
     # Limits three posts and shows most recent
     @posts = Post.where({user_id: params[:id]}).limit(3).reverse
@@ -23,11 +21,13 @@ class UsersController < ApplicationController
       tweet.text
     end
 
+    @session = session[:user_id]
     # passing through the information about the user and also our authenticity token and form
     if request.xhr?
       @controller = {
         :user => @user,
         :tweets => @tweets,
+        :session => @session,
         :form => {
           :action => user_path,
           :csrf_param => request_forgery_protection_token,
@@ -39,7 +39,8 @@ class UsersController < ApplicationController
       @controller = {
         :user => @user,
         :form => {:action => user_path},
-        :tweets => @tweets
+        :tweets => @tweets,
+        :session => @session
       }
     end
   end

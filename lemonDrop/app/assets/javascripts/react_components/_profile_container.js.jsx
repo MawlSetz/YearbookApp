@@ -48,7 +48,7 @@ var ProfileContainer = React.createClass ({
     } else {
       return (
         <div className = "profile">
-          <UserInfo user={this.state.user} form={this.state.form} onUpdateButtonSubmit={this.handleUpdateForm} />
+          <UserInfo user={this.state.user} form={this.state.form} session={this.state.session} onUpdateButtonSubmit={this.handleUpdateForm} />
         </div>
       )
     }
@@ -62,11 +62,15 @@ var UpdateButton = React.createClass({
   },
 
   render: function() {
-    return (
-      <form action={this.props.form.action} method="get" onSubmit={this.handleSubmit}>
-        <button>Update Info</button>
-      </form>
-    )
+    if (this.props.session === this.props.user.id){
+      return (
+        <form action={this.props.form.action} method="get" onSubmit={this.handleSubmit}>
+          <button>Update Info</button>
+        </form>
+      )
+    } else {
+      return <div></div>
+    }
   }
 });
 
@@ -91,7 +95,7 @@ var UserInfo = React.createClass({
     return (
       <div>
         <div id="name">
-          <UpdateButton form={this.props.form} onUpdateButtonSubmit={this.props.onUpdateButtonSubmit} />
+          <UpdateButton user={this.props.user} form={this.props.form} session={this.props.session} onUpdateButtonSubmit={this.props.onUpdateButtonSubmit} />
           <h1>{this.props.user.first} {this.props.user.last}</h1>
         </div>
         <div id="picture">
