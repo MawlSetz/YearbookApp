@@ -2,6 +2,12 @@
 class PostsController < ApplicationController
   # Load all posts into home page
   def index
+
+    if request.xhr? 
+      @posts = Post.where("tags LIKE ?", "%#{params[:search]}%")
+      render :json => {:posts => @posts}
+    end
+
     if session[:user_id]
       @controller = {
         :posts => Post.all,
