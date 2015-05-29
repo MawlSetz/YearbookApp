@@ -9,5 +9,5 @@ class User < ActiveRecord::Base
   # Required parameters when creating a new user profile
 	validates :first, presence: true
 	validates :last, presence: true
-	validates :password, length: {minimum: 4, maximum: 16}
+	validates :password, length: {minimum: 4, maximum: 16}, on: :create
 end

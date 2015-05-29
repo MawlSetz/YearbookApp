@@ -1,9 +1,21 @@
 
 var PostsContainer = React.createClass ({
-
+	// sets initial state
 	getInitialState: function(){
 		return JSON.parse(this.props.controller);
 	},
+
+	handlePostUpdate: function(formData, action){
+		$.ajax({
+			data: formData,
+			url: action,
+			type: "PUT",
+			success: function(data){
+				this.setState({posts: data})
+			}.bind(this)
+		});
+	},
+	// sends a call to posts#delete
 
 	handlePostDelete: function(formData, action){
 		$.ajax({
@@ -15,7 +27,7 @@ var PostsContainer = React.createClass ({
 			}.bind(this)
 		});
 	},
-
+	// renders posts 
 	render: function() {
 		return (
 			<div className = "posts">
@@ -31,7 +43,7 @@ var PostsContainer = React.createClass ({
 		})
 	}
 });
-
+// loops through posts one by one and creates an object with all post divs
 var PostInfo = React.createClass({
 	render: function() {
 		var postNodes = this.props.posts.map(function(post){
@@ -48,10 +60,39 @@ var PostInfo = React.createClass({
 			<div id="postNode">
 				{postNodes}	
 			</div>
-		);
+		)
 	}
 });
-
+// post fields
+var PostFields = React.createClass({
+	render: function() {
+		return (
+			<div>
+				<div id="user-id-form">
+					<form action={action}>
+						<input name="user-id" />
+					</form>
+				</div>
+				<div id="content-form">
+					<form action={action}>
+						<input name="content" placeholder="Share something" />
+					</form>
+				</div>
+				<div id="vote-form">
+					<form action={action}>
+						<input name="vote" placeholder="2" />
+					</form>
+				</div>
+				<div id="tags-form">
+					<form action={action}>
+						<input name="tags" placeholder="tag" />
+					</form>
+				</div>
+			</div>
+		)
+	}
+});
+// form for delete 
 var PostDeleteForm = React.createClass({
 	handleDelete: function(event) {
 		event.preventDefault();
@@ -71,7 +112,7 @@ var PostDeleteForm = React.createClass({
 		);
 	}
 });
-
+// renders individual posts
 var Posts = React.createClass({
 	render: function() {
 		return (
@@ -84,7 +125,7 @@ var Posts = React.createClass({
 		);
 	}
 });
-
+// when logged in, able to delete
 var PostsWithDelete = React.createClass({
 	render: function() {
 		return (

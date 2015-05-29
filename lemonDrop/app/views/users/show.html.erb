@@ -2,7 +2,18 @@
 <% if @user.bio.blank? %>
   <p>Welcome to Lemon Drop. Please don't forget to fill out your profile so other can stay connected with you.</p>
 <% end %>
+<!-- profile for individual user -->
+<h2>Profile</h2>
 <%= react_component("ProfileContainer", {:controller => @controller.to_json}) %>
+<%= react_component("UserSearchContainer", {:users => @users.to_json}) %>
+
+<!-- Posts most recent activity in feed on group page -->
+<h2>Latest Post</h2>
+<!-- erb for loop -->
+<% @posts.each do |p| %>
+  <i>Posted <%= time_ago_in_words(p.created_at) %> ago.</i><br>
+  <%= p.content %><br>
+  <%= p.tags %><br>
+  vote: <%= p.vote %><br><br>
+<% end %>
 <%= react_component("TwitterContainer", {:controller => @controller.to_json}) %>
-
-
