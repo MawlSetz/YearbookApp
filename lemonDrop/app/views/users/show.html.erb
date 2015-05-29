@@ -2,28 +2,9 @@
 <% if @user.bio.blank? %>
   <p>Welcome to Lemon Drop. Please don't forget to fill out your profile so other can stay connected with you.</p>
 <% end %>
-<%= react_component("ProfileContainer", {:controller => @controller.to_json}) %>
-<!-- Will eventually be in react -->
 <!-- profile for individual user -->
-<!-- Erb to display user information from database  -->
 <h2>Profile</h2>
-<img src="<%= @user.picture %>"><br>
-<%= @user.first %>
-<%= @user.last %><br>
-<a href="<%= @user.email %>">Email</a><br>
-<%= @user.location %><br>
-<a href="<%= @user.personal_link %>">Personal Link</a><br>
-<a href="<%= @user.github %>">GitHub</a><br>
-<a href="<%= @user.linkedin %>">LinkedIn</a><br>
-<a href="<%= @user.facebook %>">Facebook</a><br>
-<%= @user.quote %><br>
-<%= @user.bio %><br>
-<%= @user.skill_primary %><br>
-<%= @user.skill_secondary %><br>
-
-<!-- edit button for user info, only available on ind. users profile while signed in -->
-<form action="/users/<%= @user.id %>/edit" method="PUT">
-<button>Edit</button>
+<%= react_component("ProfileContainer", {:controller => @controller.to_json}) %>
 
 <!-- Posts most recent activity in feed on group page -->
 <h2>Latest Post</h2>
