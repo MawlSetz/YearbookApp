@@ -15,4 +15,4 @@
   <%= p.tags %><br>
   vote: <%= p.vote %><br><br>
 <% end %>
-
+<%= react_component("TwitterContainer", {:controller => @controller.to_json}) %>
