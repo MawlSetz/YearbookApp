@@ -5,16 +5,6 @@ var PostsContainer = React.createClass ({
 		return JSON.parse(this.props.controller);
 	},
 
-	handlePostUpdate: function(formData, action){
-		$.ajax({
-			data: formData,
-			url: action,
-			type: "PUT",
-			success: function(data){
-				this.setState({posts: data})
-			}.bind(this)
-		});
-	},
 	// sends a call to posts#delete
 
 	handlePostDelete: function(formData, action){
@@ -63,35 +53,7 @@ var PostInfo = React.createClass({
 		)
 	}
 });
-// post fields
-var PostFields = React.createClass({
-	render: function() {
-		return (
-			<div>
-				<div id="user-id-form">
-					<form action={action}>
-						<input name="user-id" />
-					</form>
-				</div>
-				<div id="content-form">
-					<form action={action}>
-						<input name="content" placeholder="Share something" />
-					</form>
-				</div>
-				<div id="vote-form">
-					<form action={action}>
-						<input name="vote" placeholder="2" />
-					</form>
-				</div>
-				<div id="tags-form">
-					<form action={action}>
-						<input name="tags" placeholder="tag" />
-					</form>
-				</div>
-			</div>
-		)
-	}
-});
+
 // form for delete 
 var PostDeleteForm = React.createClass({
 	handleDelete: function(event) {

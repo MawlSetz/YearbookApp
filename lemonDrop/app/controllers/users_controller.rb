@@ -21,13 +21,9 @@ class UsersController < ApplicationController
       config.access_token = keys[:access_token]
       config.access_token_secret = keys[:access_secret]
     end
-<<<<<<< HEAD
 
-    @tweets = client.user_timeline(@user[:twitter_handle]).take(3).each do |tweet|
-=======
     # passing appropriate tweets to user page
     @tweets = @client.user_timeline(@user[:twitter_handle]).take(3).each do |tweet|
->>>>>>> 3fd5726b5fea648449b658014f753b722e6f4f21
       tweet.created_at
       tweet.text
     end
