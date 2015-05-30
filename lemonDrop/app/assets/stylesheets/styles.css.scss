@@ -1,1 +1,67 @@
+body {
+  margin: 0;
+}
 
+.navbar {
+  width: 100%;
+  display: inline-block;
+  background-color: yellow;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.logout {
+  float: right;
+}
+
+#searches {
+  position: relative;
+}
+
+#user-search-container {
+  position: absolute;
+  display: inline-block;
+  width: 30%;
+}
+
+.skill-search {
+  position: relative;
+  display: inline-block;
+  width: 30%;
+  bottom: 100%;
+}
+
+#user-search {
+  display: inline-block;
+}
+
+#posts-container {
+  display: inline-block;
+  float: right;
+  width: 65%;
+}
+
+#user-search-field {
+  margin-bottom: 10px;
+}
+
+.user {
+  display: inline-block;
+  padding: 5px;
+  width: 140px;
+  height: 150px;
+  text-align: center;
+
+  .user-picture {
+    width: 120px;
+    height: 120px;
+    text-align: center;
+    margin: auto;
+
+    img {
+      max-height: 120px;
+      max-width: auto;
+      border-radius: 5%;
+    }
+  }
+}

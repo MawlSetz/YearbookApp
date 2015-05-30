@@ -17,7 +17,7 @@ var UserSearchContainer = React.createClass({
 	resetSearch: function() {
 		$.ajax({
 			type: "GET",
-			url: "/users", 
+			url: "/users",
 			success: function(data) {
 				this.setState({users: data.users})
 			}.bind(this)
@@ -28,7 +28,7 @@ var UserSearchContainer = React.createClass({
 		return (
 			<div id="user-search">
 				<SearchBar users={this.state.users} search={this.search} resetSearch={this.resetSearch} />
-				<UserList users={this.state.users} /> 
+				<UserList users={this.state.users} />
 			</div>
 		)
 	}
@@ -36,7 +36,7 @@ var UserSearchContainer = React.createClass({
 
 var SearchBar = React.createClass({
 	getInitialState: function(){
-		return {value: ""}	
+		return {value: ""}
 	},
 	handleChange: function(event){
 		this.setState({value: event.target.value})
@@ -49,7 +49,7 @@ var SearchBar = React.createClass({
 	},
 	render: function(){
 		var value = this.state.value
-		return <input type="text" name="search" value={value} onChange={this.handleChange} />
+		return <input id="user-search-field" type="text" name="search" value={value} placeholder="Search Users by Name" onChange={this.handleChange} />
 	},
 
 });
@@ -70,7 +70,9 @@ var User = React.createClass({
 		var link = "/users/" + this.props.user.id
 		return (
 			<div className="user">
-				<img src={this.props.user.picture} />
+        <div className="user-picture">
+  				<img src={this.props.user.picture} />
+        </div>
 				<p><a href={link}>{this.props.user.first} {this.props.user.last}</a></p>
 			</div>
 		)

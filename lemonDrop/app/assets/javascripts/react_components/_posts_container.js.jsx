@@ -1,22 +1,19 @@
-
 var PostsContainer = React.createClass ({
 	// sets initial state
 	getInitialState: function(){
 		return JSON.parse(this.props.controller);
 	},
 
-
 	handleTagSearch: function(query){
-		
-	    $.ajax({
-	      data: query,
-	      url: "/posts",
-	      type: "GET",
-	      success: function(data){
-	        this.setState({posts: data.posts});
-	      }.bind(this)
-	    });
-	  },
+    $.ajax({
+      data: query,
+      url: "/posts",
+      type: "GET",
+      success: function(data){
+        this.setState({posts: data.posts});
+      }.bind(this)
+    });
+  },
 
 	// sends a call to posts#delete
 	handlePostDelete: function(formData, action){
@@ -29,7 +26,7 @@ var PostsContainer = React.createClass ({
 			}.bind(this)
 		});
 	},
-	// renders posts 
+	// renders posts
 	render: function() {
 		return (
 			<div className = "posts">
@@ -50,7 +47,7 @@ var PostsContainer = React.createClass ({
 var PostInfo = React.createClass({
 	render: function() {
 		var postNodes = this.props.posts.map(function(post){
-			
+
 			if (this.props.session == post.user_id) {
 				return <PostsWithDelete post={post} form={this.props.form} onDelete={this.props.onDelete} />
 			}

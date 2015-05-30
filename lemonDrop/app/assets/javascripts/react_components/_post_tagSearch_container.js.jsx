@@ -1,10 +1,8 @@
 var PostTagSearchContainer = React.createClass ({
-
-  
   render: function() {
     return (
       <div className = "posts">
-        <TagForm form={this.props.form} onTagSearch={this.props.onTagSearch} />
+        <TagForm form={this.props.form} onTagSearch={this.props.onTagSearch} resetTagSearch={this.props.resetTagSearch} />
       </div>
     );
   }
@@ -17,13 +15,9 @@ var TagForm = React.createClass ({
 
   handleChange: function(event){
     this.setState({value: event.target.value})
-    if (event.target.value.length == 0) {
-      this.props.resetTagSearch
-    }
-    else {
-      this.props.onTagSearch($(this.getDOMNode()).serialize())
-    }
+    this.props.onTagSearch($(this.getDOMNode()).serialize())
   },
+
   render: function() {
     var value = this.state.value
     return (

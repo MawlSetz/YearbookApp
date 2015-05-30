@@ -1,23 +1,32 @@
 # Pushes everything from applicationController to UsersController
 class UsersController < ApplicationController
   before_action :authenticate, except: [:new, :create]
-  
+
   def index
     puts params
+
+    #search by name
     if params[:search]
       puts "SEARCHING"
       @users = User.where("first LIKE ? OR last LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
       render :json => {:users => @users}
-    else 
+
+    #search be skills
+    elsif params[:skill_search]
+      @users = User.where("skill_primary LIKE ? OR skill_secondary LIKE ?", "%#{params[:skill_search]}%", "%#{params[:skill_search]}%")
+      render :json => {:users => @users}
+
+    else
       puts "RESETING"
       @users = User.all
-      @users = @users.sample(6)
+      @users = @users.sample(4)
       render :json => {:users => @users}
     end
+
   end
 
   # User profile page
-  def show 
+  def show
     @user = User.find(params[:id])
     # Limits three posts and shows most recent
     @posts = Post.where({user_id: params[:id]}).limit(3).reverse

@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   # Load all posts into home page
   def index
 
-    if request.xhr? 
+    if request.xhr?
       @posts = Post.where("tags LIKE ?", "%#{params[:search]}%")
       render :json => {:posts => @posts}
     end
@@ -11,13 +11,15 @@ class PostsController < ApplicationController
     if session[:user_id]
       @controller = {
         :posts => Post.all,
-        :session => session[:user_id], 
+        :session => session[:user_id],
         :form => {
-          :action => posts_path, 
+          :action => posts_path,
           :csrf_param => request_forgery_protection_token,
           :csrf_token => form_authenticity_token
         }
       }
+      @users = User.all
+      @users = {users: @users.sample(4)}
     else
       # If user is not signed in, redirect to sign in page
       redirect_to login_path
@@ -35,13 +37,11 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    if session[:user_id] == @post.user_id 
+    if session[:user_id] == @post.user_id
       @post.destroy
       render :json => Post.all
     end
   end
-
-    
 
 # protects things being entered into the database
   private
