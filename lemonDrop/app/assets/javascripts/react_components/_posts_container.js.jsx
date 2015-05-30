@@ -1,4 +1,3 @@
-
 var PostsContainer = React.createClass ({
 	// sets initial state
 	getInitialState: function(){
@@ -48,7 +47,7 @@ var PostsContainer = React.createClass ({
 var PostInfo = React.createClass({
 	render: function() {
 		var postNodes = this.props.posts.map(function(post){
-			
+
 			if (this.props.session == post.user_id) {
 				return <PostsWithDelete post={post} form={this.props.form} onDelete={this.props.onDelete} />
 			}
