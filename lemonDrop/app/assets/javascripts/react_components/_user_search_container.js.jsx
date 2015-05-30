@@ -49,7 +49,7 @@ var SearchBar = React.createClass({
 	},
 	render: function(){
 		var value = this.state.value
-		return <input type="text" name="search" value={value} onChange={this.handleChange} />
+		return <input type="text" name="search" value={value} placeholder="Search Users by Name" onChange={this.handleChange} />
 	},
 
 });

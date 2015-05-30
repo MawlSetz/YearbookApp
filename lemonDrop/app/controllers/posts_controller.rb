@@ -18,6 +18,8 @@ class PostsController < ApplicationController
           :csrf_token => form_authenticity_token
         }
       }
+      @users = User.all
+      @users = {users: @users.sample(6)}
     else
       # If user is not signed in, redirect to sign in page
       redirect_to login_path
