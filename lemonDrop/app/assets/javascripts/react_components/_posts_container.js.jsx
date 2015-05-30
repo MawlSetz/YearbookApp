@@ -27,7 +27,7 @@ var PostsContainer = React.createClass ({
 			}.bind(this)
 		});
 	},
-	// renders posts 
+	// renders posts
 	render: function() {
 		return (
 			<div className = "posts">
