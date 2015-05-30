@@ -25,7 +25,7 @@ var SkillSearchContainer = React.createClass ({
 
   render: function(){
     return (
-      <div className = "user-search">
+      <div className = "skill-search">
         <SkillForm users={this.state.users} skillSearch={this.skillSearch} resetSkillSearch={this.resetSkillSearch}/>
         <UserList users={this.state.users} />
       </div>
@@ -73,7 +73,9 @@ var User = React.createClass({
     var link = "/users/" + this.props.user.id
     return (
       <div className="user">
-        <img src={this.props.user.picture} />
+        <div className="user-picture">
+          <img src={this.props.user.picture} />
+        </div>
         <p><a href={link}>{this.props.user.first} {this.props.user.last}</a></p>
       </div>
     )

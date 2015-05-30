@@ -19,7 +19,7 @@ class PostsController < ApplicationController
         }
       }
       @users = User.all
-      @users = {users: @users.sample(6)}
+      @users = {users: @users.sample(4)}
     else
       # If user is not signed in, redirect to sign in page
       redirect_to login_path
