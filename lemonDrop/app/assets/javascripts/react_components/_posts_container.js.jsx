@@ -28,6 +28,7 @@ var PostsContainer = React.createClass ({
 	},
 	// renders posts
 	render: function() {
+    debugger
 		return (
 			<div className = "posts">
 				<PostTagSearchContainer onTagSearch={this.handleTagSearch} />
