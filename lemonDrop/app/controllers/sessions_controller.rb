@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to @user
+      redirect_to posts_path
     else
       # If sign in fails, redirect to login page and display an error
       flash[:error] = "Incorrect Username or password"
