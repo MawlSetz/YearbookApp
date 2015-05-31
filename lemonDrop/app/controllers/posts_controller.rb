@@ -4,8 +4,10 @@ class PostsController < ApplicationController
   def index
     if request.xhr?
       @posts = Post.where("tags LIKE ?", "%#{params[:search]}%").map do |post|
-        {post: post, comments: post.comments.all}
+        comments = Comment.where(post_id: post[:id])
+        {post: post, comments: comments}
       end
+      puts @posts.as_json
       render :json => {:posts => @posts}
     end
 

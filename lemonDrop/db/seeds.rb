@@ -20,4 +20,8 @@ Post.create(user_id: 1, vote: 0, content: "This is some content two", tags: "Sec
 Post.create(user_id: 1, vote: 0, content: "This is some content three", tags: "Third")
 Post.create(user_id: 1, vote: 0, content: "This is some content Four", tags: "Four")
 
-Comment.create(post_id: 1, vote: 0, text: "This post is awesome", user_id: 4)
+Comment.create(post_id: 1, vote: 0, text: "This post is awesome post 1", user_id: 4)
+Comment.create(post_id: 1, vote: 0, text: "This post is awesome post 1", user_id: 1)
+Comment.create(post_id: 2, vote: 0, text: "This post is awesome post 2", user_id: 4)
+Comment.create(post_id: 3, vote: 0, text: "This post is awesome post 3", user_id: 2)
+Comment.create(post_id: 4, vote: 0, text: "This post is awesome post 4", user_id: 1)
