@@ -7,7 +7,7 @@ p {
   padding: 0px;
   margin: 0px;
   font-size: 14px;
-}
+}s
 
 a {
   padding: 0px;
@@ -15,6 +15,14 @@ a {
   font-size: 14px;
 }
 
+.button {
+  position: relative;
+  bottom: 20px;
+  left: 740px;
+  margin-left: 10px;
+  border: none;
+
+}
 
 
 header.navbar-inverse {
@@ -33,14 +41,20 @@ header.navbar-inverse {
 
 
 #searches {
-  background: #333;
+
 
   #user-search-field {
+    text-align: center;
     margin: 10px 0 10px 20px;
+    width: 220px;
   }
 
   .skill-search {
     margin: 10px 0 10px 20px;
+    #skill-form {
+      width: 220px;
+
+    }
   }
 
   .all-users {
@@ -68,24 +82,50 @@ header.navbar-inverse {
 
 
 #posts-container {
-  background: lightblue;
+
+  .posts-create-form {
+    margin: 0 20px 0 20px;
+    border-top: 1px solid #eee;
+  }
 
   .posts-tag-search {
-    display: inline-block;
     margin: 10px 0 0 20px;
     padding-right: 20px;
 
     .tag-search-box {
-      width: 105px;
+      width: 100%;
+      border: none;
+      box-shadow: none;
     }
   }
-
-  .posts-create-form {
-    margin: 10px 10px 0 0;
-    display: inline-block;
+  .form-field {
+    background-color: #fff;
   }
+    #post-text-form {
+      display: inline-block;
+      padding: 0 0 0 20px;
+      border: none;
+      width: 78%;
+      height: 80px;
+      .create-button {
+        float: right;
+        color: blue;
+      }
+    }
+    .divider {
+      display: inline-block;
+      border-left: 1px solid #eee;
+      margin: 5px;
+      height: 80px;
 
-  .posts{
+    }
+    #post-tag-form {
+      float: right;
+      border: none;
+      box-shadow: none;
+      width: 20%;
+      height: 40px;
+    }
 
   .user_post_image {
     margin: 0px;
@@ -96,6 +136,9 @@ header.navbar-inverse {
     .each-post {
       margin: 10px 0 10px 0;
       width: 100%;
+      
+      padding: 10px 0 10px 0;
+      background-color: #fff;
 
       .posts_stuff {
         display: inline-block;
@@ -107,18 +150,16 @@ header.navbar-inverse {
         background: white;
         padding: 0px;
         margin: 20px;
-        width: 15%;
+        width: 12%;
       }
 
       .content_tag {
-        border: 1px solid #888;
-        border-radius: 4px;
-        width: 78%;
+        width: 80%;
 
         .post_content {
           padding: 0 0 0 10px;
-          margin: 0px;
-          width: 400px;
+          margin: 0 0 20px 0;
+          width: 100%;
           height: 100px;
         }
         .post_tags {
@@ -126,19 +167,15 @@ header.navbar-inverse {
         }
       }
       .comment {float: right;
-        margin: 0 10px 0 0;
-        padding: 0 0 0 10px;
-        border: 1px solid #888;
-        border-radius: 4px;
-        width: 78%;
+        margin: 0 50px 0 177px;
+        border-bottom: 1px solid #eee;
+        width: 73%;
       }
     }
-    
-  }
-
 }
 #comment-field {
   padding: 0 0 0 150px;
+
 }
 
 input {
@@ -147,9 +184,7 @@ input {
   font-size: 14px;
   color: #555;
   background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  border: none;
   margin: 10px 1px 0 1px;
 }
 
@@ -180,4 +215,8 @@ input {
     }
   }
 
+}
+
+body#color{
+  background-color: #ececec;
 }

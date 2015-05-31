@@ -30,8 +30,10 @@ var PostsContainer = React.createClass ({
 	render: function() {
 		return (
 			<div className = "posts">
-				<PostTagSearchContainer onTagSearch={this.handleTagSearch} />
-				<PostCreateContainer form={this.state.form} posts={this.state.posts} onUpdate={this.onUpdate} />
+        <div className="form-field">
+				  <PostTagSearchContainer onTagSearch={this.handleTagSearch} />
+				  <PostCreateContainer form={this.state.form} posts={this.state.posts} onUpdate={this.onUpdate} />
+        </div>
 				<PostInfo posts={this.state.posts} session={this.state.session} form={this.state.form} onDelete={this.handlePostDelete} />
 			</div>
 		)
@@ -216,7 +218,7 @@ var CommentField = React.createClass({
           <input type="hidden" name={this.props.form.csrf_param} value={this.props.form.csrf_token} />
           <input type="hidden" name="comment[post_id]" value={this.props.post.id} />
           <input type="post-text" name="comment[text]" placeholder="Post" />
-          <button>Comment</button>
+          <button className="button">Comment</button>
         </form>
       </div>
     )
