@@ -149,7 +149,6 @@ var PostsWithDelete = React.createClass({
 		);
 	}
 });
-<<<<<<< HEAD
 
 var CommentsList = React.createClass({
   getInitialState: function() {
@@ -257,5 +256,3 @@ var CommentField = React.createClass({
     )
   }
 });
-=======
->>>>>>> 1b96feae7cb052f11349cc49840e0dc007cf1b02
