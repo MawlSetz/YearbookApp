@@ -30,8 +30,7 @@
 <!-- alert if user has not filled out the required parameters -->
 
 
-  <body>
-
+  <body id="body-color">
     <!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -42,12 +41,13 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="#"><img src="assets/LemonIcon_Final.png" width="30" alt=""></a>
+          <h1 class="logoName"> LemonDrop </h1>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <button type="button" class="btn btn-action btn-lg" data-toggle="modal" data-target="#myModal">
+            <button type="button" class="btn btn-action btn-md" data-toggle="modal" data-target="#myModal">
   				Already a Member?
-			</button>
+			       </button>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -57,7 +57,7 @@
 	<div id="headerwrap">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-6">
+				<div class="col-lg-6 sign-up-form">
 									
 <h3>Sign Up: </h3>
 <!-- logic preventing bad passwords from passing -->
@@ -77,20 +77,20 @@
 
 	<!-- sign up form -->
 	<div class="signup">
-			<%= f.label :first %>
+<!-- 			<%= f.label :first %> -->
 			<%= f.text_field :first, placeholder: 'First name' %>
 			<br><br>
 			
-			<%= f.label :last %>
+<!-- 			<%= f.label :last %> -->
 			<%= f.text_field :last, placeholder: 'Last name' %>
 			<br><br>
-			<%= f.label :email %>
+<!-- 			<%= f.label :email %> -->
 			<%= f.email_field :email, placeholder: 'Email' %>
 			<br><br>
-			<%= f.label :password %>
+<!-- 			<%= f.label :password %> -->
 			<%= f.password_field :password, placeholder: 'Password' %>
 			<br><br>
-			<%= f.label :password_confirmation %>
+<!-- 			<%= f.label :password_confirmation %> -->
 			<%= f.password_field :password_confirmation, placeholder: 'Password Confirmation' %>
 			<br><br>
 			<%= f.submit %>
@@ -142,7 +142,7 @@
 		<hr>
 		<div class="row centered">
 			<div class="col-lg-6 col-lg-offset-3">
-				  <a href="#" class="back-to-top"><button class="btn btn-warning btn-lg">Sign Up!</button></a>				
+				  <a href="#" class="back-to-top"><button class="btn btn-primary btn-lg">Sign Up!</button></a>				
 			</div>
 		</div><!-- /row -->
 		<hr>
