@@ -16,6 +16,9 @@
 
     <!-- Fonts from Google Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
+
+	<!-- Font Awesome Icons -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -38,7 +41,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><b>Yearbook</b></a>
+          <a class="navbar-brand" href="#"><img src="assets/LemonIcon_Final.png" width="30" alt=""></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -54,7 +57,8 @@
 	<div id="headerwrap">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-6">					
+				<div class="col-lg-6">
+									
 <h3>Sign Up: </h3>
 <!-- logic preventing bad passwords from passing -->
 <%= form_for @user do |f| %>
@@ -68,8 +72,8 @@
 	      <li style="color: red"><%= msg %></li>
 	      <% end %>
 	    </ul>
-	    <% end %>
 	  </div>
+	    <% end %>
 
 	<!-- sign up form -->
 	<div class="signup">
@@ -94,7 +98,7 @@
 	</div>				
 				</div><!-- /col-lg-6 -->
 				<div class="col-lg-6">
-					<img class="img-responsive" src="assets/img/ipad-hand.png" alt="">
+					<img class="img-responsive" src="http://placekitten.com/g/500/300" alt="">
 				</div><!-- /col-lg-6 -->
 				
 			</div><!-- /row -->
@@ -112,39 +116,34 @@
 		
 		<div class="row mt centered">
 			<div class="col-lg-4">
-				<img src="assets/img/ser01.png" width="180" alt="">
-				<h4>1 - Browser Compatibility</h4>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+				<img src="assets/Chat.png" width="180" alt="">
+				<h4>1 - Keep in touch with classmates</h4>
+				<p>View your classmates profiles to see their location, skills, latest tweets and what they've been sharing.</p>
 			</div><!--/col-lg-4 -->
 
 			<div class="col-lg-4">
-				<img src="assets/img/ser02.png" width="180" alt="">
-				<h4>2 - Email Campaigns</h4>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+				<img src="assets/Positive.png" width="180" alt="">
+				<h4>2 - Share news and opportunities</h4>
+				<p>Lemons are valuable, and so are the opportunities that they can tell you about. Share some news in the feed page and upvote the best posts.</p>
 
 			</div><!--/col-lg-4 -->
 
 			<div class="col-lg-4">
-				<img src="assets/img/ser03.png" width="180" alt="">
-				<h4>3 - Gather Your Notes</h4>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+				<img src="assets/Application.png" width="180" alt="">
+				<h4>3 - Find friends to collaborate with</h4>
+				<p>Need an extra hand on a project? Search by skills and you'll find a friendly lemon to help make your project extra sweet.</p>
 
 			</div><!--/col-lg-4 -->
 		</div><!-- /row -->
 	</div><!-- /container -->
 	
+	<!-- Back to top button -->
 	<div class="container">
 		<hr>
 		<div class="row centered">
 			<div class="col-lg-6 col-lg-offset-3">
-				<form class="form-inline" role="form">
-				  <div class="form-group">
-				    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email address">
-				  </div>
-				  <button type="submit" class="btn btn-warning btn-lg">Invite Me!</button>
-				</form>					
+				  <a href="#" class="back-to-top"><button class="btn btn-warning btn-lg">Sign Up!</button></a>				
 			</div>
-			<div class="col-lg-3"></div>
 		</div><!-- /row -->
 		<hr>
 	</div><!-- /container -->
@@ -152,8 +151,8 @@
 	<div class="container">
 		<div class="row mt centered">
 			<div class="col-lg-6 col-lg-offset-3">
-				<h1>Flatty is for Everyone.</h1>
-				<h3>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</h3>
+				<h1>The Yearbook you've always wanted.</h1>
+				<h3>No need to pay outrageous prices for some book you'll never open, pay nothing for a site with the features you'll actually use</h3>
 			</div>
 		</div><!-- /row -->
 	
@@ -171,13 +170,13 @@
 				  <!-- Wrapper for slides -->
 				  <div class="carousel-inner">
 				    <div class="item active">
-				      <img src="assets/img/p01.png" alt="">
+				      <img src="assets/images/p01.png" alt="">
 				    </div>
 				    <div class="item">
-				      <img src="assets/img/p02.png" alt="">
+				      <img src="assets/images/p02.png" alt="">
 				    </div>
 				    <div class="item">
-				      <img src="assets/img/p03.png" alt="">
+				      <img src="assets/images/p03.png" alt="">
 				    </div>
 				  </div>
 				</div>			
@@ -189,42 +188,42 @@
 	<div class="container">
 		<div class="row mt centered">
 			<div class="col-lg-6 col-lg-offset-3">
-				<h1>Our Awesome Team.<br/>Design Lovers.</h1>
-				<h3>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</h3>
+				<h1>Built with <i class="fa fa-heart"></i> from your friends</h1>
+				<h3>Our Awesome Team</h3>
 			</div>
 		</div><!-- /row -->
 		
 		<div class="row mt centered">
 			<div class="col-lg-4">
-				<img class="img-circle" src="assets/img/pic1.jpg" width="140" alt="">
+				<img class="img-circle" src="assets/aung.jpg" width="140" alt="">
 				<h4>Aung Barteaux </h4>
 				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
 				<p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"></i></p>
 			</div><!--/col-lg-4 -->
 
 			<div class="col-lg-4">
-				<img class="img-circle" src="assets/img/pic2.jpg" width="140" alt="">
+				<img class="img-circle" src="assets/cBlack.jpg" width="140" alt="">
 				<h4>Christopher Black</h4>
 				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
 				<p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"></i></p>
 			</div><!--/col-lg-4 -->
 
 			<div class="col-lg-4">
-				<img class="img-circle" src="assets/img/pic3.jpg" width="140" alt="">
+				<img class="img-circle" src="assets/molly.jpg" width="140" alt="">
 				<h4>Molly Setzer</h4>
 				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
 				<p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"></i></p>
 			</div><!--/col-lg-4 -->
 
 			<div class="col-lg-6">
-				<img class="img-circle" src="assets/img/pic2.jpg" width="140" alt="">
+				<img class="img-circle" src="/assets/meirFunny.jpg" width="140" alt="">
 				<h4>Meir Snyder</h4>
 				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
 				<p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"></i></p>
 			</div><!--/col-lg-4 -->
 
 			<div class="col-lg-6">
-				<img class="img-circle" src="assets/img/pic2.jpg" width="140" alt="">
+				<img class="img-circle" src="assets/paul.jpg" width="140" alt="">
 				<h4>Paul Fielek</h4>
 				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
 				<p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"></i></p>
@@ -232,21 +231,16 @@
 		</div><!-- /row -->
 	</div><!-- /container -->
 	
+		<!-- Back to top button -->
 	<div class="container">
 		<hr>
 		<div class="row centered">
 			<div class="col-lg-6 col-lg-offset-3">
-				<form class="form-inline" role="form">
-				  <div class="form-group">
-				    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email address">
-				  </div>
-				  <button type="submit" class="btn btn-warning btn-lg">Invite Me!</button>
-				</form>					
+				  <a href="#" class="back-to-top"><button class="btn btn-warning btn-lg">Sign Up!</button></a>				
 			</div>
-			<div class="col-lg-3"></div>
 		</div><!-- /row -->
 		<hr>
-		<p class="centered">Landing Page Design by BlackTie.co - Attribution License 3.0 - 2013</p>
+		<p class="centered">Landing Page Design Inspired by BlackTie.co - Attribution License 3.0 - 2013</p>
 	</div><!-- /container -->
 
 	<!-- Modal -->
@@ -295,5 +289,24 @@
  });
  </script>
     <% end %>
+    <script>
+jQuery(document).ready(function() {
+    var offset = 250;
+    var duration = 300;
+    jQuery(window).scroll(function() {
+        if (jQuery(this).scrollTop() > offset) {
+            jQuery('.back-to-top').fadeIn(duration);
+        } else {
+            jQuery('.back-to-top').fadeOut(duration);
+        }
+    });
+
+    jQuery('.back-to-top').click(function(event) {
+        event.preventDefault();
+        jQuery('html, body').animate({scrollTop: 0}, duration);
+        return false;
+    })
+});
+</script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   </body>
