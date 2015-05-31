@@ -42,36 +42,19 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Already a member?</a></li>
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  				Already a Member?
+			</button>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
+<!-- sign up form -->
 	<div id="headerwrap">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-6">
-					<h4>Sign In</h4>
-<p style="color: red"><%= flash[:error] %></p>
-<form action="/session" method="POST">
-	<div>
-		<label for="email">Email:</label>
-		<input name="email">
-	</div>
-	<div>
-		<label for="password">Password:</label>
-		<!-- use of authenticity token to protect user password -->
-		<input name="password" type="password">
-      	<input name="authenticity_token" value="<%= form_authenticity_token() %>" type="hidden">
-  	</div>
-      	<br><br>
-    <div>
-        <button>Log In</button>
-    </div>
-</form>
-<!-- sign up form -->
-<br><br>
+				<div class="col-lg-6">					
 <h3>Sign Up: </h3>
 <!-- logic preventing bad passwords from passing -->
 <%= form_for @user do |f| %>
@@ -200,23 +183,8 @@
 				</div>			
 			</div><!-- /col-lg-8 -->
 		</div><!-- /row -->
-	</div><! --/container -->
+	</div>
 	
-	<div class="container">
-		<hr>
-		<div class="row centered">
-			<div class="col-lg-6 col-lg-offset-3">
-				<form class="form-inline" role="form">
-				  <div class="form-group">
-				    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email address">
-				  </div>
-				  <button type="submit" class="btn btn-warning btn-lg">Invite Me!</button>
-				</form>					
-			</div>
-			<div class="col-lg-3"></div>
-		</div><!-- /row -->
-		<hr>
-	</div><!-- /container -->
 
 	<div class="container">
 		<div class="row mt centered">
@@ -229,21 +197,35 @@
 		<div class="row mt centered">
 			<div class="col-lg-4">
 				<img class="img-circle" src="assets/img/pic1.jpg" width="140" alt="">
-				<h4>Michael Robson</h4>
+				<h4>Aung Barteaux </h4>
 				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
 				<p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"></i></p>
 			</div><!--/col-lg-4 -->
 
 			<div class="col-lg-4">
 				<img class="img-circle" src="assets/img/pic2.jpg" width="140" alt="">
-				<h4>Pete Ford</h4>
+				<h4>Christopher Black</h4>
 				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
 				<p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"></i></p>
 			</div><!--/col-lg-4 -->
 
 			<div class="col-lg-4">
 				<img class="img-circle" src="assets/img/pic3.jpg" width="140" alt="">
-				<h4>Angelica Finning</h4>
+				<h4>Molly Setzer</h4>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+				<p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"></i></p>
+			</div><!--/col-lg-4 -->
+
+			<div class="col-lg-6">
+				<img class="img-circle" src="assets/img/pic2.jpg" width="140" alt="">
+				<h4>Meir Snyder</h4>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+				<p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"></i></p>
+			</div><!--/col-lg-4 -->
+
+			<div class="col-lg-6">
+				<img class="img-circle" src="assets/img/pic2.jpg" width="140" alt="">
+				<h4>Paul Fielek</h4>
 				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
 				<p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"></i></p>
 			</div><!--/col-lg-4 -->
@@ -264,14 +246,54 @@
 			<div class="col-lg-3"></div>
 		</div><!-- /row -->
 		<hr>
-		<p class="centered">Created by BlackTie.co - Attribution License 3.0 - 2013</p>
+		<p class="centered">Landing Page Design by BlackTie.co - Attribution License 3.0 - 2013</p>
 	</div><!-- /container -->
 
+	<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+      </div>
+      <div class="modal-body">
+        <h4>Please enter your email and password</h4>
+<p style="color: red"><%= flash[:error] %></p>
+<form action="/session" method="POST">
+	<div>
+		<label for="email">Email:</label>
+		<input name="email">
+	</div>
+	<div>
+		<label for="password">Password:</label>
+		<!-- use of authenticity token to protect user password -->
+		<input name="password" type="password">
+      	<input name="authenticity_token" value="<%= form_authenticity_token() %>" type="hidden">
+  	</div>
+      	<br><br>
+    <div>
+        <button >Log In</button>
+    </div>
+</form>
+      </div>
+    </div>
+  </div>
+</div>
 
-	
+
+
 	    <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <% if flash[:error] %>
+     <script type="text/javascript">
+ $(window).load(function () {
+ $('#myModal').modal('show')
+ });
+ </script>
+    <% end %>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   </body>

@@ -10,10 +10,10 @@ var PostCreateContainer = React.createClass ({
       }.bind(this)
     });
   },
-  
+
   render: function() {
     return (
-      <div className = "posts">
+      <div className = "posts-create-form">
         <PostForm form={this.props.form} onPostSubmit={this.handlePostSubmit} />
       </div>
     );
