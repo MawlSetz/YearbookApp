@@ -81,7 +81,7 @@ var PostDeleteForm = React.createClass({
 // renders individual posts
 var Posts = React.createClass({
   getInitialState: function() {
-    return {vote: this.props.post.post.vote}
+    return {vote: this.props.post.post.vote, comments: this.props.post.comments}
   },
 
   handleVote: function() {
@@ -90,7 +90,7 @@ var Posts = React.createClass({
       url: path,
       type: "PUT",
       success: function(data) {
-        this.setState({vote: data.vote});
+        this.setState({vote: data.vote, comments: data.comments});
       }.bind(this)
     })
   },
@@ -107,7 +107,7 @@ var Posts = React.createClass({
 				<p className="post_tags">Tag: {this.props.post.post.tags}</p>
         <VoteButton post={this.props.post} onVote={this.handleVote} />
 			</div>
-      <CommentsList session={this.props.session} post={this.props.post.post} comments={this.props.post.comments} form={this.props.form} />
+      <CommentsList session={this.props.session} post={this.props.post.post} comments={this.state.comments} form={this.props.form} />
 		</div>
 		);
 	}
@@ -115,7 +115,7 @@ var Posts = React.createClass({
 // when logged in, able to delete
 var PostsWithDelete = React.createClass({
    getInitialState: function() {
-    return {vote: this.props.post.post.vote}
+    return {vote: this.props.post.post.vote, comments: this.props.post.comments}
   },
 
   handleVote: function() {
@@ -124,7 +124,7 @@ var PostsWithDelete = React.createClass({
       url: path,
       type: "PUT",
       success: function(data) {
-        this.setState({vote: data.vote});
+        this.setState({vote: data.vote, comments: data.comments});
       }.bind(this)
     })
   },
@@ -142,7 +142,7 @@ var PostsWithDelete = React.createClass({
         <VoteButton post={this.props.post} onVote={this.handleVote} />
 			</div>
 			<PostDeleteForm post={this.props.post} onDelete={this.props.onDelete} />
-      <CommentsList session={this.props.session} post={this.props.post.post} comments={this.props.post.comments} form={this.props.form} />
+      <CommentsList session={this.props.session} post={this.props.post.post} comments={this.state.comments} form={this.props.form} />
 		</div>
 		);
 	}

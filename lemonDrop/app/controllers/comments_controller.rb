@@ -2,10 +2,21 @@
 class CommentsController < ApplicationController
   # Will create a new comment and save it to the database
   def create
-    @comment = Comment.create(user_id: session[:user_id], text: comment_params[:text], post_id: comment_params[:post_id])
+    @comment = Comment.create(user_id: session[:user_id], text: comment_params[:text], post_id: comment_params[:post_id], vote: 0)
     if @comment.save
-      @comments = Comment.where(post_id: comment_params[:post_id])
-      render :json => {comments: @comments}
+      comments = Comment.where(post_id: comment_params[:post_id]).map do |comment|
+        comment_voted = false
+        comment_votes = CommentsVote.where(comment_id: comment[:id], vote: true)
+        comment_votes.each do |vote|
+          if vote[:user_id] == session[:user_id] && vote[:comment_id] == comment[:id]
+            comment_voted = true
+          end
+        end
+        comment = comment.as_json
+        comment[:user_voted] = comment_voted
+        comment
+      end
+      render :json => {comments: comments}
     else
       #render json
     end
@@ -44,8 +55,19 @@ class CommentsController < ApplicationController
     if session[:user_id] == @comment[:user_id]
       post_id = @comment[:post_id]
       @comment.destroy
-      @comments = Comment.where(post_id: post_id)
-      render :json => {comments: @comments}
+      comments = Comment.where(post_id: post_id).map do |comment|
+        comment_voted = false
+        comment_votes = CommentsVote.where(comment_id: comment[:id], vote: true)
+        comment_votes.each do |vote|
+          if vote[:user_id] == session[:user_id] && vote[:comment_id] == comment[:id]
+            comment_voted = true
+          end
+        end
+        comment = comment.as_json
+        comment[:user_voted] = comment_voted
+        comment
+      end
+      render :json => {comments: comments}
     end
   end
 
@@ -54,5 +76,4 @@ class CommentsController < ApplicationController
     def comment_params
       params.require(:comment).permit(:post_id, :vote, :text, :user_id)
     end
-
 end

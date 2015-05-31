@@ -4,10 +4,29 @@ class PostsController < ApplicationController
   def index
     if request.xhr?
       @posts = Post.where("tags LIKE ?", "%#{params[:search]}%").map do |post|
-        comments = Comment.where(post_id: post[:id])
+        comments = Comment.where(post_id: post[:id]).map do |comment|
+          comment_voted = false
+          comment_votes = CommentsVote.where(comment_id: comment[:id], vote: true)
+          comment_votes.each do |vote|
+            if vote[:user_id] == session[:user_id] && vote[:comment_id] == comment[:id]
+              comment_voted = true
+            end
+          end
+          comment = comment.as_json
+          comment[:user_voted] = comment_voted
+          comment
+        end
+        post_voted = false
+        post_votes = PostsVote.where(post_id: post[:id], vote: true)
+        post_votes.each do |vote|
+          if vote[:user_id] == session[:user_id] && vote[:post_id] == post[:id]
+            post_voted = true
+          end
+        end
+        post = post.as_json
+        post[:user_voted] = post_voted
         {post: post, comments: comments}
       end
-      puts @posts.as_json
       render :json => {:posts => @posts}
     end
 
@@ -55,7 +74,7 @@ class PostsController < ApplicationController
   end
   # Create a new post
   def create
-    @post = Post.create(user_id: session[:user_id], content: post_params[:content], tags: post_params[:tags])
+    @post = Post.create(user_id: session[:user_id], content: post_params[:content], tags: post_params[:tags], vote: 0)
     if @post.save
       @posts = Post.all.map do |post|
         {post: post, comments: post.comments.all}
@@ -90,7 +109,8 @@ class PostsController < ApplicationController
     end
     @post = Post.find(params[:id])
     @post.update(vote: total_votes)
-    render json: {vote: total_votes}
+    @comments = Comment.where(post_id: @post[:id])
+    render json: {vote: total_votes, comments: @comments}
   end
 
   def destroy
@@ -109,5 +129,4 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:user_id, :vote, :content, :tags)
     end
-
 end
