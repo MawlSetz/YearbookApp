@@ -15,9 +15,13 @@ User.create(first: "Paul", last: "Fielek", email: "paulfielek@gmail.com", passwo
 
 User.create(first: "Molly", last: "Setzer", email: "molly.setzer@gmail.com", password: "password", location: "New York", picture: "http://www.placekitten.com/g/500/500", github: "https://github.com/MawlSetz", linkedin: "https://www.linkedin.com/in/MollySetzer", facebook: "https://www.facebook.com/setzerml", quote: "say something", bio: "this is Molly's Bio", skill_primary: "Javascript", skill_secondary: "Ruby", personal_link: "http://mollysetzer.squarespace.com", twitter_handle: 'mawl_setz')
 
-Post.create(user_id: 1, vote: 2, content: "This is some content", tags: "First")
-Post.create(user_id: 1, vote: 2, content: "This is some content two", tags: "Second")
-Post.create(user_id: 1, vote: 2, content: "This is some content three", tags: "Third")
-Post.create(user_id: 1, vote: 2, content: "This is some content Four", tags: "Four")
+Post.create(user_id: 1, vote: 0, content: "This is some content", tags: "First")
+Post.create(user_id: 1, vote: 0, content: "This is some content two", tags: "Second")
+Post.create(user_id: 1, vote: 0, content: "This is some content three", tags: "Third")
+Post.create(user_id: 1, vote: 0, content: "This is some content Four", tags: "Four")
 
-Comment.create(post_id: 1, vote: 1, text: "This post is awesome", user_id: 4)
+Comment.create(post_id: 1, vote: 0, text: "This post is awesome post 1", user_id: 4)
+Comment.create(post_id: 1, vote: 0, text: "This post is awesome post 1", user_id: 1)
+Comment.create(post_id: 2, vote: 0, text: "This post is awesome post 2", user_id: 4)
+Comment.create(post_id: 3, vote: 0, text: "This post is awesome post 3", user_id: 2)
+Comment.create(post_id: 4, vote: 0, text: "This post is awesome post 4", user_id: 1)
