@@ -22,7 +22,7 @@ var PostsContainer = React.createClass ({
 			url: action,
 			type: "DELETE",
 			success: function(data){
-				this.setState({posts: data})
+				this.setState({posts: data.posts})
 			}.bind(this)
 		});
 	},
@@ -38,16 +38,14 @@ var PostsContainer = React.createClass ({
 	},
 
 	onUpdate: function(val) {
-		this.setState({
-			posts: val
-		})
+		this.setState({posts: val.posts})
 	}
 });
 // loops through posts one by one and creates an object with all post divs
 var PostInfo = React.createClass({
 	render: function() {
 		var postNodes = this.props.posts.map(function(post){
-			if (this.props.session == post.user_id) {
+			if (this.props.session == post.post.user_id) {
 				return <PostsWithDelete post={post} form={this.props.form} session={this.props.session} onDelete={this.props.onDelete} />
 			} else {
 				return <Posts post={post} session={this.props.session} form={this.props.form} />
@@ -70,7 +68,7 @@ var PostDeleteForm = React.createClass({
 	},
 
 	render: function() {
-		var path = "/posts/"+ this.props.post.id
+		var path = "/posts/"+ this.props.post.post.id
 		return (
 			<form ref="form" action={path} method="POST" onSubmit={this.handleDelete}>
 				<input type="hidden" name={this.props.post.csrf_param} value={this.props.post.csrf_token} />
@@ -84,11 +82,15 @@ var PostDeleteForm = React.createClass({
 var Posts = React.createClass({
 	render: function() {
 		return (
-		<div>
-			<p>User: {this.props.post.post.user_id}</p>
-			<p>{this.props.post.post.content}</p>
-			<p>Vote: {this.props.post.post.vote}</p>
-			<p>Tag: {this.props.post.post.tags}</p>
+		<div className="each-post">
+			<div className="img_vote posts_stuff">
+				<p className="user_post_image">User: {this.props.post.post.user_id}</p>
+				<p className="vote">Vote: {this.props.post.vote}</p>
+			</div>
+			<div className="content_tag posts_stuff">
+				<p className="post_content">{this.props.post.post.content}</p>
+				<p className="post_tags">Tag: {this.props.post.post.tags}</p>
+			</div>
       <CommentsList session={this.props.session} post={this.props.post.post} comments={this.props.post.comments} form={this.props.form} />
 		</div>
 		);
@@ -98,11 +100,15 @@ var Posts = React.createClass({
 var PostsWithDelete = React.createClass({
 	render: function() {
 		return (
-		<div>
-			<p>User: {this.props.post.post.user_id}</p>
-			<p>{this.props.post.post.content}</p>
-			<p>Vote: {this.props.post.post.vote}</p>
-			<p>Tag: {this.props.post.post.tags}</p>
+		<div className="each-post">
+			<div className="img_vote posts_stuff">
+				<p className="user_post_image">User: {this.props.post.post.user_id}</p>
+				<p className="vote">Vote: {this.props.post.post.vote}</p>
+			</div>
+			<div className="content_tag posts_stuff">
+				<p className="post_content">{this.props.post.post.content}</p>
+				<p className="post_tags">Tag: {this.props.post.post.tags}</p>
+			</div>
 			<PostDeleteForm post={this.props.post} onDelete={this.props.onDelete} />
       <CommentsList session={this.props.session} post={this.props.post.post} comments={this.props.post.comments} form={this.props.form} />
 		</div>

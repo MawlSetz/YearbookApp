@@ -1,0 +1,142 @@
+@media (max-width: 1680px) {
+  
+  #searches {
+    display: inline-block;
+    margin-left: 50px;
+    width: 25%
+  }
+  #user-search-container {
+    display: inline-block;
+    position: relative;
+  }
+
+  #posts-container {
+    margin-right: 50px;
+    display: inline-block;
+    padding: 0px 0px 0px 20px;
+    width: 65%;
+  }
+}
+
+@media (max-width: 750px) {
+
+  #searches {
+    display: block;
+  }
+
+  #user-search-container {
+    display: block;
+    position: relative;
+  }
+  #posts-container {
+    display: block;
+  }
+}
+
+body {
+  margin: 0;
+}
+
+.navbar {
+  width: 100%;
+  display: inline-block;
+  background-color: yellow;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.logout {
+  float: right;
+}
+
+#user-search-container {
+  background: pink;
+}
+
+#skill-search {
+  background: yellow;
+  position: relative;
+  display: inline-block;
+}
+
+#user-search {
+  display: inline-block;
+}
+
+#searches {
+  background: red;
+}
+
+#posts-container {
+  background: lightblue;
+  float: right;
+}
+
+.posts {
+  display: inline-block;
+  padding-right: 20px;
+}
+
+#user-search-field {
+  margin-bottom: 10px;
+}
+
+.user_post_image {
+  margin: 0px;
+  width: 50px;
+  height: 50px;
+  background: blue;
+}
+
+.posts_stuff {
+  display: inline-block;
+  width: 100%;
+}
+
+.post_content {
+  padding: 0px;
+  margin: 0px;
+  width: 400px;
+  height: 100px;
+}
+
+.img_vote {
+  position: relative;
+  top: -50px;
+  background: white;
+  padding: 0px;
+  margin: 0px;
+  width: 15%;
+}
+.each-post {
+  margin: 10px 0 10px 0;
+  width: 100%;
+}
+
+.content_tag {
+  background: yellow;
+  width: 80%;
+}
+
+.user {
+  display: inline-block;
+  padding: 5px;
+  width: 140px;
+  height: 150px;
+  text-align: center;
+
+  .user-picture {
+    width: 120px;
+    height: 120px;
+    text-align: center;
+    margin: auto;
+
+    img {
+      max-height: 120px;
+      max-width: auto;
+      border-radius: 5%;
+    }
+  }
+}
+
+

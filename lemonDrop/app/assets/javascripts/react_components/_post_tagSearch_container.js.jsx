@@ -1,7 +1,7 @@
 var PostTagSearchContainer = React.createClass ({
   render: function() {
     return (
-      <div className = "posts">
+      <div className = "posts-tag-search">
         <TagForm form={this.props.form} onTagSearch={this.props.onTagSearch} resetTagSearch={this.props.resetTagSearch} />
       </div>
     );

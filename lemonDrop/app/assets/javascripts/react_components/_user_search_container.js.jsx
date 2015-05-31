@@ -60,7 +60,7 @@ var UserList = React.createClass({
 			return <User user={user} />
 		})
 		return (
-			<div>{userNodes}</div>
+			<div className="all-users">{userNodes}</div>
 		)
 	}
 });

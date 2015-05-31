@@ -4,6 +4,7 @@
   <title>LemonDrop</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -16,9 +17,9 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
 
         <div class="nav navbar-nav">
-          <a href="/">HOME</a>
-          <a href="/users/<%=current_user.id%>">Profile</a>
-          <%= link_to "logout", session_path, method: :delete, class: "logout" %>
+          <a href="/" class="header-button">HOME</a>
+          <a href="/users/<%=current_user.id%>" class="header-button">Profile</a>
+          <%= link_to "logout", session_path, method: :delete, class: "header-button" %>
         </div>
 
 

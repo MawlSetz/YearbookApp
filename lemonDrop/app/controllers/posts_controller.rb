@@ -15,6 +15,7 @@ class PostsController < ApplicationController
       end
       @controller = {
         :posts => @posts,
+        :users => User.all,
         :session => session[:user_id],
         :form => {
           :action => posts_path,
@@ -33,7 +34,10 @@ class PostsController < ApplicationController
   def create
     @post = Post.create(user_id: session[:user_id], content: post_params[:content], tags: post_params[:tags])
     if @post.save
-      render :json => Post.all
+      @posts = Post.all.map do |post|
+        {post: post, comments: post.comments.all}
+      end
+      render :json => {:posts => @posts}
     else
       redirect_to posts
     end
@@ -43,7 +47,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if session[:user_id] == @post.user_id
       @post.destroy
-      render :json => Post.all
+      @posts = Post.all.map do |post|
+        {post: post, comments: post.comments.all}
+      end
+      render :json => {:posts => @posts}
     end
   end
 
