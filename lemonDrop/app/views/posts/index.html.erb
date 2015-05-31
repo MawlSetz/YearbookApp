@@ -1,19 +1,77 @@
+<!-- BOOTSTRAP TAPS SET UP -->
+<head>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-    
-<div id="main-container" class="container">
-<div class="row">
-  <div class="col-md-12">
-    <h1>hi</h1>
-  </div>
-</div>
+  <link rel="javascript" type="text/javascript" href="bootstrap.min.js">
+</head>
+
+<!-- COMPUTER SCREEN SET UP -->
+<div id="main-container" class="container hidden-xs hidden-sm">
   <div class="row">
-    <div class="col-md-3 col-xs-12 hidden-xs" id="searches">
+    <div class="col-md-3" id="searches">
       <%= react_component("UserSearchContainer", {:users => @users.to_json}, id: "user-search-container") %>
       <%= react_component("SkillSearchContainer", {}, id: "skill-search") %>
     </div>
-    <div class="col-md-9 col-xs-12" id="show-posts">
+    <div class="col-md-9" id="show-posts">
       <%= react_component("PostsContainer", {:controller => @controller.to_json}, id: "posts-container") %>
+    </div> 
+  </div>
+</div>
+
+<!-- MOBILE SET UP -->
+<!-- <div id="main-container" class="container hidden-md hidden-lg">
+  <ul id="myTab" class="nav nav-tabs">
+    <li class="active"><a href="#home" data-toggle="tab">Posts</a></li>
+    <li><a href="#profile" data-toggle="tab">Searches</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="row">
+      <div class="col-md-3 col-xs-12" id="searches">
+        <div id="myTabContent" class="tab-content">
+          <div class="tab-pane fade" id="profile">
+            <%= react_component("UserSearchContainer", {:users => @users.to_json}, id: "user-search-container") %>
+            <%= react_component("SkillSearchContainer", {}, id: "skill-search") %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9 col-xs-12" id="show-posts">
+        <div class="tab-pane fade in active" id="home">
+          <%= react_component("PostsContainer", {:controller => @controller.to_json}, id: "posts-container") %>
+        </div>
+      </div> 
     </div>
   </div>
-  
+</div> -->
+
+<div class="bs-docs-example hidden-md hidden-lg" id="mobile">
+    <ul id="myTab" class="nav nav-tabs">
+      <li class="active"><a href="#post-tab" data-toggle="tab">Posts</a></li>
+      <li><a href="#search-tab" data-toggle="tab">Searches</a></li>
+    </ul>
+
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade in active" id="post-tab">
+      <div class="col-xs-12" id="show-posts">
+        <%= react_component("PostsContainer", {:controller => @controller.to_json}, id: "posts-container") %>
+      </div>
+      </div>
+      <div class="tab-pane fade" id="search-tab">
+        <div class="col-xs-12" id="searches">
+          <%= react_component("UserSearchContainer", {:users => @users.to_json}, id: "user-search-container") %>
+          <%= react_component("SkillSearchContainer", {}, id: "skill-search") %>
+        </div>
+      </div>
+    </div>
 </div>
+<script>
+$('#myTab b').click(function (e) {
+    if($(this).parent('li').hasClass('active')){
+        $( $(this).attr('href') ).hide();
+    }
+    else {
+        e.preventDefault();
+        $(this).tab('show');
+    }
+});
+</script>
