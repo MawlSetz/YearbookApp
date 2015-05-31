@@ -24,7 +24,6 @@ class CommentsController < ApplicationController
       end
     end
     if exists
-      puts "EXISTS"
       @comment_vote.update(vote: false)
       total_votes -= 1
     elsif @comment_vote

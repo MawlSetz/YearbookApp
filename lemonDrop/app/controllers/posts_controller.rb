@@ -15,11 +15,6 @@ class PostsController < ApplicationController
           comment_voted = false
           comment_votes = CommentsVote.where(comment_id: comment[:id], vote: true)
           comment_votes.each do |vote|
-            puts "XXXXXXXXXXXXXXXXX"
-            puts vote[:user_id]
-            puts session[:user_id]
-            puts vote[:comment_id]
-            puts comment[:id]
             if vote[:user_id] == session[:user_id] && vote[:comment_id] == comment[:id]
               comment_voted = true
             end
@@ -28,6 +23,15 @@ class PostsController < ApplicationController
           comment[:user_voted] = comment_voted
           comment
         end
+        post_voted = false
+        post_votes = PostsVote.where(post_id: post[:id], vote: true)
+        post_votes.each do |vote|
+          if vote[:user_id] == session[:user_id] && vote[:post_id] == post[:id]
+            post_voted = true
+          end
+        end
+        post = post.as_json
+        post[:user_voted] = post_voted
         {post: post, comments: comments}
       end
       @controller = {
@@ -58,6 +62,33 @@ class PostsController < ApplicationController
     else
       redirect_to posts
     end
+  end
+
+  def update
+    @post_votes = PostsVote.where(post_id: params[:id])
+    total_votes = PostsVote.where(post_id: params[:id], vote: true).length
+    exists = false
+    @post_votes.each do |vote|
+      if vote[:user_id] == session[:user_id] && vote[:post_id] == params[:id].to_i && vote[:vote]
+        exists = true
+        @post_vote = PostsVote.find(vote[:id])
+      elsif vote[:user_id] == session[:user_id] && vote[:post_id] == params[:id].to_i && !vote[:vote]
+        @post_vote = PostsVote.find(vote[:id])
+      end
+    end
+    if exists
+      @post_vote.update(vote: false)
+      total_votes -= 1
+    elsif @post_vote
+      @post_vote.update(vote: true)
+      total_votes += 1
+    else
+      PostsVote.create(post_id: params[:id], user_id: session[:user_id], vote: true)
+      total_votes += 1
+    end
+    @post = Post.find(params[:id])
+    @post.update(vote: total_votes)
+    render json: {vote: total_votes}
   end
 
   def destroy
