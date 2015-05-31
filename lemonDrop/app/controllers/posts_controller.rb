@@ -3,13 +3,18 @@ class PostsController < ApplicationController
   # Load all posts into home page
   def index
     if request.xhr?
-      @posts = Post.where("tags LIKE ?", "%#{params[:search]}%")
+      @posts = Post.where("tags LIKE ?", "%#{params[:search]}%").map do |post|
+        {post: post, comments: post.comments.all}
+      end
       render :json => {:posts => @posts}
     end
 
     if session[:user_id]
+      @posts = Post.all.map do |post|
+        {post: post, comments: post.comments.all}
+      end
       @controller = {
-        :posts => Post.all,
+        :posts => @posts,
         :session => session[:user_id],
         :form => {
           :action => posts_path,

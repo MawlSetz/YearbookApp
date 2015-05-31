@@ -20,4 +20,4 @@ Post.create(user_id: 1, vote: 2, content: "This is some content two", tags: "Sec
 Post.create(user_id: 1, vote: 2, content: "This is some content three", tags: "Third")
 Post.create(user_id: 1, vote: 2, content: "This is some content Four", tags: "Four")
 
-Comment.create(post_id: 1, vote: 1, content: "This post is awesome", user_id: 1)
+Comment.create(post_id: 1, vote: 1, text: "This post is awesome", user_id: 4)
