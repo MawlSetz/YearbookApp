@@ -8,11 +8,11 @@
  */
 
 body {
-  background-color: #000;
+  background-color: #999;
     font-family: 'Lato', sans-serif;
     font-weight: 300;
     font-size: 16px;
-    color: #555;
+    color: #333;
 
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
@@ -27,6 +27,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
 	font-size: 40px;
+
 }
 
 h3 {
@@ -89,7 +90,7 @@ a:after {
 }
 
 .navbar-default {
-	background-color: #333;
+	background-color: #555;
 	border-color: transparent;
 }
 
@@ -116,14 +117,14 @@ a:after {
 
 i {
 	margin: 8px;
-	color: #3498db; 
+	color: #333; 
 }
 
 
 /* HeaderWrap */
 #headerwrap {
 	/* background: url(../img/bg01.jpg) no-repeat center top; */
-	background-color: #3498db;
+	background-color: #fff;
 	margin-top: -20px;
 	padding-top:200px;
 	background-attachment: relative;
@@ -154,6 +155,7 @@ i {
 div.navbar.navbar-default.navbar-fixed-top {
     background-color: #000;
     height: 80px;
+    border-bottom: #000;
 }
 .navbar-brand img {
     width: 70px;
@@ -163,16 +165,49 @@ div.navbar.navbar-default.navbar-fixed-top {
 
 ul.nav.navbar-nav.navbar-right { 
     position: relative;
-    top: 15px;
-    
+    top: 20px;
+    color: #000;
 }
 
+.btn {
+    background-color: #fff;
+}
 
+.btn-action {
+    border-radius: ;
+}
 
+.sign-up-form {
+    color: #000;
+}
 
+input[type=text] {
+    font-color: #000;
+} 
 
+body {
+    background-color: #000;
+}
 
+.logoName {
+    position: relative;
+    left: 80px;
+    bottom: 30px;
+    color: #d3d3d3;
+}
 
+#body-color {
+    background-color: #ccc  ;
+}
+
+.back-to-top button{
+    background-color:white;
+    color:black;
+}
+.back-to-top button:hover{
+    background-color: #404040;
+    color:black;
+}
 
 
 

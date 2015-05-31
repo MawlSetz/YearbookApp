@@ -52,7 +52,7 @@ var SkillForm = React.createClass ({
   render: function() {
     var value = this.state.value
     return (
-      <input type="skill-text" name="skill_search" value={value} placeholder="Search Users by Skills" onChange={this.handleChange} />
+      <input id="skill-form" type="skill-text" name="skill_search" value={value} placeholder="Search Users by Skills" onChange={this.handleChange} />
     );
   }
 });

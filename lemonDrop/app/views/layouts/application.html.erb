@@ -4,11 +4,7 @@
   <title>LemonDrop</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <!-- toggle button on nav bar for mobile -->
-  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
-  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -21,22 +17,8 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
 
         <div class="nav navbar-nav">
-       <!--  <div class="checkbox"> -->
-        <input id="toggle-event" type="checkbox" data-toggle="toggle" class="toggle col-xs-12">Search Users</input>
-          <div id="console-event"></div>
-            <script>
-              $(function(){
-                $('#toggle-event').change(function(){
-                  $('#console-event').html('Toggle: ' + $(this).prop('checked'))
-                });
-              })
-            </script>
-       
-            
-         <!--  </div> -->
-
           <a href="/" class="header-button">HOME</a>
-          <a href="/users/<%=current_user.id%>" class="header-button">Profile</>
+          <a href="/users/<%=current_user.id%>" class="header-button">Profile</a>
           <%= link_to "logout", session_path, method: :delete, class: "header-button" %>
         </div>
 
