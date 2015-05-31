@@ -11,7 +11,24 @@ class PostsController < ApplicationController
 
     if session[:user_id]
       @posts = Post.all.map do |post|
-        {post: post, comments: post.comments.all}
+        comments = post.comments.all.map do |comment|
+          comment_voted = false
+          comment_votes = CommentsVote.where(comment_id: comment[:id], vote: true)
+          comment_votes.each do |vote|
+            puts "XXXXXXXXXXXXXXXXX"
+            puts vote[:user_id]
+            puts session[:user_id]
+            puts vote[:comment_id]
+            puts comment[:id]
+            if vote[:user_id] == session[:user_id] && vote[:comment_id] == comment[:id]
+              comment_voted = true
+            end
+          end
+          comment = comment.as_json
+          comment[:user_voted] = comment_voted
+          comment
+        end
+        {post: post, comments: comments}
       end
       @controller = {
         :posts => @posts,

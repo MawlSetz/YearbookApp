@@ -11,6 +11,34 @@ class CommentsController < ApplicationController
     end
   end
 
+  def update
+    @comment_votes = CommentsVote.where(comment_id: params[:id])
+    total_votes = CommentsVote.where(comment_id: params[:id], vote: true).length
+    exists = false
+    @comment_votes.each do |vote|
+      if vote[:user_id] == session[:user_id] && vote[:comment_id] == params[:id].to_i && vote[:vote]
+        exists = true
+        @comment_vote = CommentsVote.find(vote[:id])
+      elsif vote[:user_id] == session[:user_id] && vote[:comment_id] == params[:id].to_i && !vote[:vote]
+        @comment_vote = CommentsVote.find(vote[:id])
+      end
+    end
+    if exists
+      puts "EXISTS"
+      @comment_vote.update(vote: false)
+      total_votes -= 1
+    elsif @comment_vote
+      @comment_vote.update(vote: true)
+      total_votes += 1
+    else
+      CommentsVote.create(comment_id: params[:id], user_id: session[:user_id], vote: true)
+      total_votes += 1
+    end
+    @comment = Comment.find(params[:id])
+    @comment.update(vote: total_votes)
+    render json: {vote: total_votes}
+  end
+
   def destroy
     puts params
     @comment = Comment.find(params[:id])
