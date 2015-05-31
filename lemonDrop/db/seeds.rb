@@ -15,12 +15,17 @@ User.create(first: "Paul", last: "Fielek", email: "paulfielek@gmail.com", passwo
 
 User.create(first: "Molly", last: "Setzer", email: "molly.setzer@gmail.com", password: "password", location: "New York", picture: "http://www.placekitten.com/g/500/500", github: "https://github.com/MawlSetz", linkedin: "https://www.linkedin.com/in/MollySetzer", facebook: "https://www.facebook.com/setzerml", quote: "say something", bio: "this is Molly's Bio", skill_primary: "Javascript", skill_secondary: "Ruby", personal_link: "http://mollysetzer.squarespace.com", twitter_handle: 'mawl_setz')
 
-Post.create(user_id: 1, vote: 2, content: "Lorem ipsum dolor sit amet, praesent maluisset ne vel. Eos populo recusabo theophrastus cu, purto postea vis te. Cum te causae virtute. Ad sit exerci option, modo nostrum interpretaris ne mei.", tags: "First")
-Post.create(user_id: 1, vote: 2, content: "Lorem ipsum dolor sit amet, praesent maluisset ne vel. Eos populo recusabo theophrastus cu, purto postea vis te. Cum te causae virtute. Ad sit exerci option, modo nostrum interpretaris ne mei.
+Post.create(user_id: 1, vote: 0, content: "Lorem ipsum dolor sit amet, praesent maluisset ne vel. Eos populo recusabo theophrastus cu, purto postea vis te. Cum te causae virtute. Ad sit exerci option, modo nostrum interpretaris ne mei.", tags: "First")
+Post.create(user_id: 5, vote: 0, content: "Lorem ipsum dolor sit amet, praesent maluisset ne vel. Eos populo recusabo theophrastus cu, purto postea vis te. Cum te causae virtute. Ad sit exerci option, modo nostrum interpretaris ne mei.
   
 Has no posse invenire intellegebat, sit ea instructior contentiones reprehendunt. Id per mazim sententiae. 
 ", tags: "Second")
-Post.create(user_id: 1, vote: 2, content: "Lorem ipsum dolor sit amet, praesent maluisset ne vel. Eos populo recusabo theophrastus cu, purto postea vis te. Cum te causae virtute. Ad sit exerci option, modo nostrum interpretaris ne mei.", tags: "Third")
-Post.create(user_id: 1, vote: 2, content: "Usu et movet audiam antiopam, oporteat sententiae in vix. Id duo suas stet, natum concludaturque ad vis. Ipsum audiam gubergren sea no, cu sea scripta phaedrum. No sumo apeirian eam, eum nihil prodesset te. Te dolorem accusamus has, qui cu graecis definitiones, ea nam postea percipitur. Cum et liber iisque apeirian, utinam labore nam in, vim eu magna facilisi.", tags: "Four")
+Post.create(user_id: 2, vote: 0, content: "Lorem ipsum dolor sit amet, praesent maluisset ne vel. Eos populo recusabo theophrastus cu, purto postea vis te. Cum te causae virtute. Ad sit exerci option, modo nostrum interpretaris ne mei.", tags: "Third")
+Post.create(user_id: 1, vote: 0, content: "Usu et movet audiam antiopam, oporteat sententiae in vix. Id duo suas stet, natum concludaturque ad vis. Ipsum audiam gubergren sea no, cu sea scripta phaedrum. No sumo apeirian eam, eum nihil prodesset te. Te dolorem accusamus has, qui cu graecis definitiones, ea nam postea percipitur. Cum et liber iisque apeirian, utinam labore nam in, vim eu magna facilisi.", tags: "Four")
 
-Comment.create(post_id: 1, vote: 1, text: "This post is awesome", user_id: 4)
+
+Comment.create(post_id: 1, vote: 0, text: "This post is awesome post 1", user_id: 4)
+Comment.create(post_id: 1, vote: 0, text: "This post is awesome post 1", user_id: 1)
+Comment.create(post_id: 2, vote: 0, text: "This post is awesome post 2", user_id: 4)
+Comment.create(post_id: 3, vote: 0, text: "This post is awesome post 3", user_id: 2)
+Comment.create(post_id: 4, vote: 0, text: "This post is awesome post 4", user_id: 1)

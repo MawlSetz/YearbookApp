@@ -82,41 +82,74 @@ var PostDeleteForm = React.createClass({
 });
 // renders individual posts
 var Posts = React.createClass({
+  getInitialState: function() {
+    return {vote: this.props.post.post.vote, comments: this.props.post.comments}
+  },
+
+  handleVote: function() {
+    var path = "/posts/" + this.props.post.post.id
+    $.ajax({
+      url: path,
+      type: "PUT",
+      success: function(data) {
+        this.setState({vote: data.vote, comments: data.comments});
+      }.bind(this)
+    })
+  },
+
 	render: function() {
 		return (
 		<div className="each-post">
 			<div className="img_vote posts_stuff">
 				<p className="user_post_image">User: {this.props.post.post.user_id}</p>
-				<p className="vote">Vote: {this.props.post.vote}</p>
+				<p className="vote">Vote: {this.state.vote}</p>
 			</div>
 			<div className="content_tag posts_stuff">
 				<p className="post_content">{this.props.post.post.content}</p>
 				<p className="post_tags">Tag: {this.props.post.post.tags}</p>
+        <VoteButton post={this.props.post} onVote={this.handleVote} />
 			</div>
-      <CommentsList session={this.props.session} post={this.props.post.post} comments={this.props.post.comments} form={this.props.form} />
+      <CommentsList session={this.props.session} post={this.props.post.post} comments={this.state.comments} form={this.props.form} />
 		</div>
 		);
 	}
 });
 // when logged in, able to delete
 var PostsWithDelete = React.createClass({
+   getInitialState: function() {
+    return {vote: this.props.post.post.vote, comments: this.props.post.comments}
+  },
+
+  handleVote: function() {
+    var path = "/posts/" + this.props.post.post.id
+    $.ajax({
+      url: path,
+      type: "PUT",
+      success: function(data) {
+        this.setState({vote: data.vote, comments: data.comments});
+      }.bind(this)
+    })
+  },
+
 	render: function() {
 		return (
 		<div className="each-post">
 			<div className="img_vote posts_stuff">
 				<p className="user_post_image">User: {this.props.post.post.user_id}</p>
-				<p className="vote">Vote: {this.props.post.post.vote}</p>
+				<p className="vote">Vote: {this.state.vote}</p>
 			</div>
 			<div className="content_tag posts_stuff">
 				<p className="post_content">{this.props.post.post.content}</p>
 				<p className="post_tags">Tag: {this.props.post.post.tags}</p>
+        <VoteButton post={this.props.post} onVote={this.handleVote} />
 			</div>
 			<PostDeleteForm post={this.props.post} onDelete={this.props.onDelete} />
-      <CommentsList session={this.props.session} post={this.props.post.post} comments={this.props.post.comments} form={this.props.form} />
+      <CommentsList session={this.props.session} post={this.props.post.post} comments={this.state.comments} form={this.props.form} />
 		</div>
 		);
 	}
 });
+<<<<<<< HEAD
 
 var CommentsList = React.createClass({
   getInitialState: function() {
@@ -224,3 +257,5 @@ var CommentField = React.createClass({
     )
   }
 });
+=======
+>>>>>>> 1b96feae7cb052f11349cc49840e0dc007cf1b02

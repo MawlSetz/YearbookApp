@@ -4,14 +4,56 @@ class PostsController < ApplicationController
   def index
     if request.xhr?
       @posts = Post.where("tags LIKE ?", "%#{params[:search]}%").map do |post|
-        {post: post, comments: post.comments.all}
+        comments = Comment.where(post_id: post[:id]).map do |comment|
+          comment_voted = false
+          comment_votes = CommentsVote.where(comment_id: comment[:id], vote: true)
+          comment_votes.each do |vote|
+            if vote[:user_id] == session[:user_id] && vote[:comment_id] == comment[:id]
+              comment_voted = true
+            end
+          end
+          comment = comment.as_json
+          comment[:user_voted] = comment_voted
+          comment
+        end
+        post_voted = false
+        post_votes = PostsVote.where(post_id: post[:id], vote: true)
+        post_votes.each do |vote|
+          if vote[:user_id] == session[:user_id] && vote[:post_id] == post[:id]
+            post_voted = true
+          end
+        end
+        post = post.as_json
+        post[:user_voted] = post_voted
+        {post: post, comments: comments}
       end
       render :json => {:posts => @posts}
     end
 
     if session[:user_id]
       @posts = Post.all.map do |post|
-        {post: post, comments: post.comments.all}
+        comments = post.comments.all.map do |comment|
+          comment_voted = false
+          comment_votes = CommentsVote.where(comment_id: comment[:id], vote: true)
+          comment_votes.each do |vote|
+            if vote[:user_id] == session[:user_id] && vote[:comment_id] == comment[:id]
+              comment_voted = true
+            end
+          end
+          comment = comment.as_json
+          comment[:user_voted] = comment_voted
+          comment
+        end
+        post_voted = false
+        post_votes = PostsVote.where(post_id: post[:id], vote: true)
+        post_votes.each do |vote|
+          if vote[:user_id] == session[:user_id] && vote[:post_id] == post[:id]
+            post_voted = true
+          end
+        end
+        post = post.as_json
+        post[:user_voted] = post_voted
+        {post: post, comments: comments}
       end
       @controller = {
         :posts => @posts,
@@ -32,7 +74,7 @@ class PostsController < ApplicationController
   end
   # Create a new post
   def create
-    @post = Post.create(user_id: session[:user_id], content: post_params[:content], tags: post_params[:tags])
+    @post = Post.create(user_id: session[:user_id], content: post_params[:content], tags: post_params[:tags], vote: 0)
     if @post.save
       @posts = Post.all.map do |post|
         {post: post, comments: post.comments.all}
@@ -41,6 +83,34 @@ class PostsController < ApplicationController
     else
       redirect_to posts
     end
+  end
+
+  def update
+    @post_votes = PostsVote.where(post_id: params[:id])
+    total_votes = PostsVote.where(post_id: params[:id], vote: true).length
+    exists = false
+    @post_votes.each do |vote|
+      if vote[:user_id] == session[:user_id] && vote[:post_id] == params[:id].to_i && vote[:vote]
+        exists = true
+        @post_vote = PostsVote.find(vote[:id])
+      elsif vote[:user_id] == session[:user_id] && vote[:post_id] == params[:id].to_i && !vote[:vote]
+        @post_vote = PostsVote.find(vote[:id])
+      end
+    end
+    if exists
+      @post_vote.update(vote: false)
+      total_votes -= 1
+    elsif @post_vote
+      @post_vote.update(vote: true)
+      total_votes += 1
+    else
+      PostsVote.create(post_id: params[:id], user_id: session[:user_id], vote: true)
+      total_votes += 1
+    end
+    @post = Post.find(params[:id])
+    @post.update(vote: total_votes)
+    @comments = Comment.where(post_id: @post[:id])
+    render json: {vote: total_votes, comments: @comments}
   end
 
   def destroy
@@ -59,5 +129,4 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:user_id, :vote, :content, :tags)
     end
-
 end
