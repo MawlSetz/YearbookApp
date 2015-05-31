@@ -211,3 +211,27 @@ input {
 }
 
 
+   <input id="toggle-event" type="checkbox" data-toggle="toggle" class="toggle col-xs-12">Search Users</input>
+          <div id="console-event"></div>
+            <script>
+              $(function(){
+                $('#toggle-event').change(function(){
+                  $('#console-event').html('Toggle: ' + $(this).prop('checked'))
+                });
+              })
+</script>
+
+                 <a href="#searches" class="btn btn-default" data-toggle="collapse">Searches</a>
+          <button href="#show-posts" class="btn btn-default" data-toggle="collapse">Posts</button>
+          <div id="searches" class="collapse">
+          </div>
+
+
+<a href="#Foo" class="btn btn-default" data-toggle="collapse">Toggle Foo</a>
+    <button href="#Bar" class="btn btn-default" data-toggle="collapse">Toggle Bar</button>
+    <div id="Foo" class="collapse">
+        This div (Foo) is hidden by default
+    </div>
+    <div id="Bar" class="collapse in">
+        This div (Bar) is shown by default and can toggle
+    </div>
