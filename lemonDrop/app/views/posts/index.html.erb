@@ -1,6 +1,19 @@
-<h1>hi</h1>
-<div id="searches">
-  <%= react_component("UserSearchContainer", {:users => @users.to_json}, id: "user-search-container col-md-2") %>
-  <%= react_component("SkillSearchContainer", {}, id: "skill-search") %>
+
+    
+<div id="main-container" class="container">
+<div class="row">
+  <div class="col-md-12">
+    <h1>hi</h1>
+  </div>
 </div>
-<%= react_component("PostsContainer", {:controller => @controller.to_json}, id: "posts-container") %>
+  <div class="row">
+    <div class="col-md-3 col-xs-12 hidden-xs" id="searches">
+      <%= react_component("UserSearchContainer", {:users => @users.to_json}, id: "user-search-container") %>
+      <%= react_component("SkillSearchContainer", {}, id: "skill-search") %>
+    </div>
+    <div class="col-md-9 col-xs-12" id="show-posts">
+      <%= react_component("PostsContainer", {:controller => @controller.to_json}, id: "posts-container") %>
+    </div>
+  </div>
+  
+</div>
