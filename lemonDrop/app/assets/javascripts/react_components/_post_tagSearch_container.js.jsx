@@ -21,7 +21,7 @@ var TagForm = React.createClass ({
   render: function() {
     var value = this.state.value
     return (
-      <input type="tags-text" name="search" value={value} placeholder="Search by Tags" onChange={this.handleChange} />
+      <input className="tag-search-box" type="tags-text" name="search" value={value} placeholder="Search by Tags" onChange={this.handleChange} />
     );
   }
 });

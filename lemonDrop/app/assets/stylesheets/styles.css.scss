@@ -78,6 +78,10 @@ header.navbar-inverse {
     display: inline-block;
     margin: 10px 0 0 20px;
     padding-right: 20px;
+
+    .tag-search-box {
+      width: 105px;
+    }
   }
 
   .posts-create-form {
@@ -111,20 +115,34 @@ header.navbar-inverse {
       }
 
       .content_tag {
-        background: yellow;
+        border: 1px solid #888;
+        border-radius: 4px;
         width: 78%;
 
         .post_content {
-          padding: 0px;
+          padding: 0 0 0 10px;
           margin: 0px;
           width: 400px;
           height: 100px;
         }
+        .post_tags {
+          padding: 0 0 0 10px;
+        }
+      }
+      .comment {float: right;
+        margin: 0 10px 0 0;
+        padding: 0 0 0 10px;
+        border: 1px solid #888;
+        border-radius: 4px;
+        width: 78%;
       }
     }
     
   }
 
+}
+#comment-field {
+  padding: 0 0 0 150px;
 }
 
 input {
