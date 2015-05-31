@@ -11,6 +11,7 @@ class PostsController < ApplicationController
     if session[:user_id]
       @controller = {
         :posts => Post.all,
+        :users => User.all,
         :session => session[:user_id],
         :form => {
           :action => posts_path,

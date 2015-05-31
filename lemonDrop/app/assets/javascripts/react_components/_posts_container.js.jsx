@@ -88,11 +88,15 @@ var PostDeleteForm = React.createClass({
 var Posts = React.createClass({
 	render: function() {
 		return (
-		<div>
-			<p>User: {this.props.post.user_id}</p>
-			<p>{this.props.post.content}</p>
-			<p>Vote: {this.props.post.vote}</p>
-			<p>Tag: {this.props.post.tags}</p>
+		<div className="each-post">
+			<div className="img_vote posts_stuff">
+				<p className="user_post_image">User: {this.props.post.user_id}</p>
+				<p className="vote">Vote: {this.props.post.vote}</p>
+			</div>
+			<div className="content_tag posts_stuff">
+				<p className="post_content">{this.props.post.content}</p>
+				<p className="post_tags">Tag: {this.props.post.tags}</p>
+			</div>
 		</div>
 		);
 	}
@@ -101,11 +105,15 @@ var Posts = React.createClass({
 var PostsWithDelete = React.createClass({
 	render: function() {
 		return (
-		<div>
-			<p>User: {this.props.post.user_id}</p>
-			<p>{this.props.post.content}</p>
-			<p>Vote: {this.props.post.vote}</p>
-			<p>Tag: {this.props.post.tags}</p>
+		<div className="each-post">
+			<div className="img_vote posts_stuff">
+				<p className="user_post_image">User: {this.props.post.user_id}</p>
+				<p className="vote">Vote: {this.props.post.vote}</p>
+			</div>
+			<div className="content_tag posts_stuff">
+				<p className="post_content">{this.props.post.content}</p>
+				<p className="post_tags">Tag: {this.props.post.tags}</p>
+			</div>
 			<PostDeleteForm post={this.props.post} onDelete={this.props.onDelete} />
 		</div>
 		);

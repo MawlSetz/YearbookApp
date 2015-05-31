@@ -30,3 +30,184 @@
   <%= p.tags %><br>
   vote: <%= p.vote %><br><br>
 <% end %> -->
+
+
+@media (max-width: 1680px) {
+  
+  #searches {
+    display: inline-block;
+    margin-left: 50px;
+    width: 25%
+  }
+  #user-search-container {
+    display: inline-block;
+    position: relative;
+  }
+
+  #posts-container {
+    margin-right: 50px;
+    display: inline-block;
+    padding: 0px 0px 0px 20px;
+    width: 65%;
+  }
+}
+
+@media (max-width: 750px) {
+
+  #searches {
+    display: block;
+  }
+
+  #user-search-container {
+    display: block;
+    position: relative;
+  }
+  #posts-container {
+    display: block;
+  }
+}
+
+p {
+  padding: 0px;
+  margin: 0px;
+  font-size: 14px;
+}
+
+a {
+  padding: 0px;
+  margin: 0px;
+  font-size: 14px;
+}
+
+body {
+  margin: 0;
+}
+
+.navbar {
+  width: 100%;
+  display: inline-block;
+  background-color: #333;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.logout {
+  float: right;
+}
+
+#user-search-container {
+  background: #333;
+}
+
+#skill-search {
+  background: yellow;
+  position: relative;
+  display: inline-block;
+}
+
+#user-search {
+  display: inline-block;
+}
+
+#searches {
+  background: red;
+}
+
+#posts-container {
+  background: lightblue;
+  float: right;
+}
+
+#user-search-field {
+  margin-bottom: 10px;
+}
+
+.user_post_image {
+  margin: 0px;
+  width: 50px;
+  height: 50px;
+  background: blue;
+}
+
+.posts-tag-search {
+  display: inline-block;
+  padding-right: 20px;
+}
+
+.posts-create-form {
+  display: inline-block;
+}
+
+.posts{
+  width: 100%;
+
+  .each-post {
+    margin: 10px 0 10px 0;
+    width: 100%;
+
+    .posts_stuff {
+      display: inline-block;
+      width: 100%;
+    }
+    .img_vote {
+      position: relative;
+      top: -50px;
+      background: white;
+      padding: 0px;
+      margin: 0px;
+      width: 15%;
+    }
+
+    .content_tag {
+      background: yellow;
+      width: 80%;
+
+      .post_content {
+        padding: 0px;
+        margin: 0px;
+        width: 400px;
+        height: 100px;
+      }
+    }
+  }
+  
+}
+
+input {
+  height: 34px;
+  padding: 10px 5px 10px 5px;
+  font-size: 14px;
+  color: #555;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  margin: 10px 1px 0 1px;
+}
+
+#user-search-field {
+    margin-left: 20px;
+}
+
+.all-users {
+  text-align: center;
+
+  .user {
+    display: inline-block;
+    padding: 5px;
+    width: 120px;
+    height: 120px;
+    text-align: center;
+
+    img {
+      text-align: center;
+      max-width: 100px;
+      height: auto;
+      border-radius: 5%;
+    }
+
+  }
+  
+}
+
+

@@ -1,6 +1,6 @@
 <h1>hi</h1>
 <div id="searches">
-  <%= react_component("UserSearchContainer", {:users => @users.to_json}, id: "user-search-container") %>
+  <%= react_component("UserSearchContainer", {:users => @users.to_json}, id: "user-search-container col-md-2") %>
   <%= react_component("SkillSearchContainer", {}, id: "skill-search") %>
 </div>
 <%= react_component("PostsContainer", {:controller => @controller.to_json}, id: "posts-container") %>
