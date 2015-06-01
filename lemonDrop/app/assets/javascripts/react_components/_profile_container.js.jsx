@@ -99,12 +99,12 @@ var UserInfo = React.createClass({
           <h1>{this.props.user.first} {this.props.user.last}</h1>
         </div>
         <div id="picture">
-          <img src={this.props.user.picture} />
+          <img id="pic" src={this.props.user.picture} />
         </div>
         <div id="basic-info">
           <h3>{this.props.user.email}</h3>
-          <h3>{this.props.user.location}</h3>
-          <h3>{this.props.user.personal_link}</h3>
+          <h3><a href={this.props.user.personal_link}>{this.props.user.personal_link}</a></h3>
+          <h3>current city: {this.props.user.location}</h3>
         </div>
         <div id="social">
           <a href={this.props.user.github}>Github</a>

@@ -29,10 +29,26 @@ header.navbar-inverse {
   border-radius: 0px;
   width: 100%;
   display: inline-block;
-  background-color: #333;
   padding-top: 10px;
   padding-bottom: 10px;
+  background-color: black;
+  border-color: transparent;
+  float: right;
 }
+img.icon{
+  float: left;
+  width: 70px;
+  position: relative;
+  bottom: 13px;
+}
+a.header-button{
+  display: inline;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 50%;
+  
+}
+
 
 #user-search {
   display: inline-block;
@@ -219,4 +235,58 @@ input {
 
 body#color{
   background-color: #ececec;
+}
+#profile-container{
+  padding-top: 40px;
+  background-color: white;
+  width: 70%;
+  position:relative;
+  right: 0;
+    #name{
+      color: black;
+      margin-left:30px;
+      top: -40px;
+      right: 30px;
+      color: black;
+      padding-top:30px;
+      padding-left: 40%;
+      position: relative;
+    }
+  #picture{
+    #pic{
+      margin-left:30px;
+      position: relative;
+      max-width: 250px;
+      height: auto;
+      border-radius: 5%;
+
+      }
+  }
+  #basic-info{
+    top: -100px;
+    color: black;
+    text-align: left;
+    padding-left: 40%;
+    position: relative;
+    a{
+    color: black;
+    }
+  }
+  #social{
+  margin-left:30px;
+  position: relative;
+  top: -130px;
+  padding: 20px 20px 20px 0px;
+      a {
+      padding: 20px 50px 20px 0px;
+    }
+
+  }
+  #bio{
+  margin-left:30px;
+  position: relative;
+  top: -130px;
+  padding: 20px 50px 20px 0px;
+   
+  }
 }
