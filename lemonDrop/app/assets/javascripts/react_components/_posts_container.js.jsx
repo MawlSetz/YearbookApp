@@ -94,6 +94,7 @@ var Posts = React.createClass({
       url: path,
       type: "PUT",
       success: function(data) {
+        this.props.post.comments = data.comments
         this.setState({vote: data.vote, comments: data.comments});
       }.bind(this)
     })
@@ -138,6 +139,7 @@ var PostsWithDelete = React.createClass({
       url: path,
       type: "PUT",
       success: function(data) {
+        this.props.post.comments = data.comments
         this.setState({vote: data.vote, comments: data.comments});
       }.bind(this)
     })
