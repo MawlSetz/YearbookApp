@@ -65,7 +65,7 @@ var UpdateButton = React.createClass({
     if (this.props.session === this.props.user.id){
       return (
         <form action={this.props.form.action} method="get" onSubmit={this.handleSubmit}>
-          <button className="button update-button">Update Info</button>
+          <button className="btn btn-warning btn-sm">Update Info</button>
         </form>
       )
     } else {
@@ -83,7 +83,7 @@ var OkayButton = React.createClass({
   render: function() {
     return (
       <form onSubmit={this.handlePress}>
-        <button className="update-button">Done</button>
+        <button className="btn btn-warning btn-sm">Done</button>
       </form>
     )
   }
@@ -144,30 +144,30 @@ var UserFields = React.createClass({
         <OkayButton onOkayPress={this.props.onOkayPress} />
         <p>{user.first} {user.last}</p>
         <form onSubmit={this.handleShowField}>
-          <button className="update-button">Edit Name</button>
+          <button className="btn btn-warning btn-sm">Edit Name</button>
         </form>
         <div id="name-form" className="form" style={{display: "none"}}>
           <form action={this.props.action} onSubmit={this.onUpdate}>
             <input type="hidden" name={this.props.form.csrf_param} value={this.props.form.csrf_token} />
             <input name="user[first]" placeholder="First Name" />
             <input name="user[last]" placeholder="Last Name" />
-            <button className="update-button">Update</button>
+            <button className="btn btn-warning btn-sm">Update</button>
           </form>
         </div>
         <img src={user.picture} />
         <form onSubmit={this.handleShowField}>
-          <button className="update-button">Edit Profile Picture</button>
+          <button className="btn btn-warning btn-sm">Edit Profile Picture</button>
         </form>
         <div id="picture-form" className="form" style={{display: "none"}} onSubmit={this.onUpdate}>
           <form action={this.props.action} onSubmit={this.onUpdate}>
             <input type="hidden" name={this.props.form.csrf_param} value={this.props.form.csrf_token} />
             <input name="user[picture]" placeholder="Your Yearbook photo" />
-            <button className="update-button">Update</button>
+            <button className="btn btn-warning btn-sm">Update</button>
           </form>
         </div>
         <p>{user.email}<br />{user.location}<br />{user.personal_link}</p>
         <form onSubmit={this.handleShowField}>
-          <button className="update-button">Edit Personal Information</button>
+          <button className="btn btn-warning btn-sm">Edit Personal Information</button>
         </form>
         <div id="basic-info-form" className="form" style={{display: "none"}}>
           <form action={this.props.action} onSubmit={this.onUpdate}>
@@ -175,12 +175,12 @@ var UserFields = React.createClass({
             <input name="user[email]" placeholder="email" />
             <input name="user[location]" placeholder="location" />
             <input name="user[personal_link]" placeholder="personal website" />
-            <button className="update-button">Update</button>
+            <button className="btn btn-warning btn-sm">Update</button>
           </form>
         </div>
         <p>{user.github}<br />{user.linkedin}<br />{user.facebook}<br />{user.twitter_handle}</p>
         <form onSubmit={this.handleShowField}>
-          <button className="update-button">Edit Links</button>
+          <button className="btn btn-warning btn-sm">Edit Links</button>
         </form>
         <div id="social-form" className="form" style={{display: "none"}}>
           <form action={this.props.action} onSubmit={this.onUpdate}>
@@ -189,41 +189,41 @@ var UserFields = React.createClass({
             <input name="user[linkedin]" placeholder="LinkedIn" />
             <input name="user[facebook]" placeholder="Facebook" />
             <input name="user[twitter_handle]" placeholder="Twitter Handle" />
-            <button className="update-button">Update</button>
+            <button className="btn btn-warning btn-sm">Update</button>
           </form>
         </div>
         <p>{user.bio}</p>
         <form onSubmit={this.handleShowField}>
-          <button className="update-button">Edit Bio</button>
+          <button className="btn btn-warning btn-sm">Edit Bio</button>
         </form>
         <div id="bio-form" className="form" style={{display: "none"}}>
           <form action={this.props.action} onSubmit={this.onUpdate}>
             <input type="hidden" name={this.props.form.csrf_param} value={this.props.form.csrf_token} />
             <input name="user[bio]" placeholder="Tell us about yourself" />
-            <button className="update-button">Update</button>
+            <button className="btn btn-warning btn-sm">Update</button>
           </form>
         </div>
         <p>{user.quote}</p>
         <form onSubmit={this.handleShowField}>
-          <button className="update-button">Edit Quote</button>
+          <button className="btn btn-warning btn-sm">Edit Quote</button>
         </form>
         <div id="quote-form" className="form" style={{display: "none"}}>
           <form action={this.props.action} onSubmit={this.onUpdate}>
             <input type="hidden" name={this.props.form.csrf_param} value={this.props.form.csrf_token} />
             <input name="user[quote]" placeholder="Your yearbook quote" />
-            <button className="update-button">Update</button>
+            <button className="btn btn-warning btn-sm">Update</button>
           </form>
         </div>
         <p>{user.skill_primary} {user.skill_secondary}</p>
         <form onSubmit={this.handleShowField}>
-          <button className="update-button">Edit Skills</button>
+          <button className="btn btn-warning btn-sm">Edit Skills</button>
         </form>
         <div id="skills-form" className="form" style={{display: "none"}}>
           <form action={this.props.action} onSubmit={this.onUpdate}>
             <input type="hidden" name={this.props.form.csrf_param} value={this.props.form.csrf_token} />
             <input name="user[skill_primary]" placeholder="Top tech skill" />
             <input name="user[skill_secondary]" placeholder="Secondary tech skill" />
-            <button className="update-button">Update</button>
+            <button className="btn btn-warning btn-sm">Update</button>
           </form>
         </div>
       </div>
