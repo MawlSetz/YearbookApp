@@ -65,7 +65,7 @@ img.icon{
 .nav-ul {
   position: relative;
   top: -20px;
-  left: 860px;
+  left: 850px;
   width: 350px;
   a {
     font-size: 18px;
@@ -375,37 +375,29 @@ body#color{
 }
 
 #profile-container{
-  padding-top: 20px;
+  padding-top: 40px;
   background-color: white;
   width: 70%;
   position:relative;
   right: 0;
-  .update-button {
-    border: none;
-    background-color: #fbd334;
-    bottom: 0px;
-    left: -13px;
-    margin: 10px 0 10px 0;
-  }
-  #edit-title {
-    margin-top: 0px;
-  }
-  #name{
-    color: black;
-    margin-left:30px;
-    right: 30px;
-    color: black;
-    padding-left: 40%;
-    position: relative;
-    top: -250px;
-    
-  }
+    #name{
+      color: black;
+      margin-left:30px;
+      right: 30px;
+      color: black;
+      padding-left: 40%;
+      position: relative;
+      top: -230px;
+      
+    }
   #picture{
     #pic{
       margin-left:30px;
       position: relative;
       max-width: 250px;
       height: auto;
+      border-radius: 5%;
+
       }
   }
   #basic-info{
@@ -422,7 +414,7 @@ body#color{
   #social{
   margin-left:30px;
   position: relative;
-  top: -200px;
+  top: -130px;
   padding: 20px 20px 20px 0px;
       a {
       padding: 20px 50px 20px 0px;
@@ -432,7 +424,7 @@ body#color{
   #bio{
   margin-left:30px;
   position: relative;
-  top: -200px;
+  top: -130px;
   padding: 20px 50px 20px 0px;
    
   }
