@@ -12,11 +12,10 @@
   <header class="navbar  navbar-inverse">
     <div class="navbar-class">
       <div class="container">
-
-
       <!-- Collect the nav links, forms, and other content for toggling -->
 
         <div class="nav navbar-nav">
+          <img class="icon" src="assets/LemonIcon_Final.png">
           <a href="/" class="header-button">HOME</a>
           <a href="/users/<%=current_user.id%>" class="header-button">Profile</a>
           <%= link_to "logout", session_path, method: :delete, class: "header-button" %>

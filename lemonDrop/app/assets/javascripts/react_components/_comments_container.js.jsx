@@ -57,7 +57,8 @@ var Comment = React.createClass({
       url: path,
       type: "PUT",
       success: function(data) {
-        this.setState({vote: data.vote});
+        this.props.comment.vote = data.vote
+        this.setState({});
       }.bind(this)
     });
   },
@@ -74,7 +75,7 @@ var Comment = React.createClass({
       <div className="comment">
         <ul className="comment-ul">
           <li className="comment-li comment-name"><b>{commentUser.first} {commentUser.last}</b></li>
-          <li className="comment-li"><p className="vote">Vote: {this.state.vote}</p></li>
+          <li className="comment-li"><p className="vote">Vote: {this.props.comment.vote}</p></li>
           <li className="comment-li"><VoteButton form={this.props.form} comment={this.props.comment} onVote={this.handleVote} /></li>
         </ul>
         <p>{this.props.comment.text}</p>
@@ -95,7 +96,8 @@ var CommentWithDelete = React.createClass({
       url: path,
       type: "PUT",
       success: function(data) {
-        this.setState({vote: data.vote});
+        this.props.comment.vote = data.vote
+        this.setState({});
       }.bind(this)
     });
   },
@@ -112,7 +114,7 @@ var CommentWithDelete = React.createClass({
       <div className="comment">
         <ul className="comment-ul">
           <li className="comment-li comment-name"><b>{commentUser.first} {commentUser.last}</b></li>
-          <li className="comment-li"><p className="vote">Vote: {this.state.vote}</p></li>
+          <li className="comment-li"><p className="vote">Vote: {this.props.comment.vote}</p></li>
           <li className="comment-li"><VoteButton form={this.props.form} comment={this.props.comment} onVote={this.handleVote} /></li>
           <li className="comment-li"><CommentDeleteButton comment={this.props.comment} form={this.props.form} onDelete={this.props.onDelete} /></li>
         </ul>

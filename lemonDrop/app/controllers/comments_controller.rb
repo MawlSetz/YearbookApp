@@ -50,7 +50,6 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    puts params
     @comment = Comment.find(params[:id])
     if session[:user_id] == @comment[:user_id]
       post_id = @comment[:post_id]
