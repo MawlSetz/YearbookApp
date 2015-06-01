@@ -28,16 +28,16 @@ var PostForm = React.createClass ({
     var formData = $(this.getDOMNode()).serialize();
     this.props.onPostSubmit(formData, this.props.form.action);
     $(event.target).children().eq(1).val("");
-    $(event.target).children().eq(2).val("")
+    $(event.target).children().eq(3).val("")
   },
 
   render: function() {
     return (
       <form action={this.props.form.action} method="post" onSubmit={this.handleSubmit} >
       <input type="hidden" name={this.props.form.csrf_param} value={this.props.form.csrf_token} />
-      <textarea id="post-text-form" type="post-text" name="text" name="post[content]" placeholder="Post" />
+      <textarea id="post-text-form" type="post-text" name="text" name="post[content]" placeholder="Create Post" />
       <div className="divider"></div>
-      <input id="post-tag-form" type="post-tags" name="text" name="post[tags]" placeholder="Tags" />
+      <input id="post-tag-form" type="post-tags" name="text" name="post[tags]" placeholder="Add Tags" />
       <button className="button create-button">Create</button>
       </form>
     );
