@@ -86,9 +86,10 @@ var Posts = React.createClass({
     return {vote: this.props.post.post.vote, comments: this.props.post.comments}
   },
 
-  handleVote: function() {
+  handleVote: function(formData) {
     var path = "/posts/" + this.props.post.post.id
     $.ajax({
+      data: formData,
       url: path,
       type: "PUT",
       success: function(data) {
@@ -107,7 +108,7 @@ var Posts = React.createClass({
 			<div className="content_tag posts_stuff">
 				<p className="post_content">{this.props.post.post.content}</p>
 				<p className="post_tags">Tag: {this.props.post.post.tags}</p>
-        <VoteButton post={this.props.post} onVote={this.handleVote} />
+        <VoteButton post={this.props.post} form={this.props.form} onVote={this.handleVote} />
 			</div>
       <CommentsList session={this.props.session} post={this.props.post.post} comments={this.state.comments} form={this.props.form} />
 		</div>
@@ -120,9 +121,10 @@ var PostsWithDelete = React.createClass({
     return {vote: this.props.post.post.vote, comments: this.props.post.comments}
   },
 
-  handleVote: function() {
+  handleVote: function(formData) {
     var path = "/posts/" + this.props.post.post.id
     $.ajax({
+      data: formData,
       url: path,
       type: "PUT",
       success: function(data) {
@@ -141,10 +143,10 @@ var PostsWithDelete = React.createClass({
 			<div className="content_tag posts_stuff">
 				<p className="post_content">{this.props.post.post.content}</p>
 				<p className="post_tags">Tag: {this.props.post.post.tags}</p>
-        <VoteButton post={this.props.post} onVote={this.handleVote} />
+        <VoteButton post={this.props.post} form={this.props.form} onVote={this.handleVote} />
 			</div>
 			<PostDeleteForm post={this.props.post} onDelete={this.props.onDelete} />
-      <CommentsList session={this.props.session} post={this.props.post.post} comments={this.state.comments} form={this.props.form} />
+      <CommentsList session={this.props.session} form={this.props.form} post={this.props.post.post} comments={this.state.comments} form={this.props.form} />
 		</div>
 		);
 	}

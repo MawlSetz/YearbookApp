@@ -32,7 +32,7 @@ var CommentsList = React.createClass({
       if (this.props.session === comment.user_id) {
         return <CommentWithDelete comment={comment} form={this.props.form} onDelete={this.handleCommentDelete} />
       } else {
-        return <Comment comment={comment} />
+        return <Comment form={this.props.form} comment={comment} />
       }
     }.bind(this));
     return (
@@ -50,9 +50,10 @@ var Comment = React.createClass({
     return {vote: this.props.comment.vote}
   },
 
-  handleVote: function() {
+  handleVote: function(formData) {
     var path = "/comments/" + this.props.comment.id
     $.ajax({
+      data: formData,
       url: path,
       type: "PUT",
       success: function(data) {
@@ -66,7 +67,7 @@ var Comment = React.createClass({
       <div className="comment">
         <p>{this.props.comment.text}</p>
         <p>Vote: {this.state.vote}</p>
-        <VoteButton comment={this.props.comment} onVote={this.handleVote} />
+        <VoteButton form={this.props.form} comment={this.props.comment} onVote={this.handleVote} />
       </div>
     )
   }
@@ -77,9 +78,10 @@ var CommentWithDelete = React.createClass({
     return {vote: this.props.comment.vote}
   },
 
-  handleVote: function() {
+  handleVote: function(formData) {
     var path = "/comments/" + this.props.comment.id
     $.ajax({
+      data: formData,
       url: path,
       type: "PUT",
       success: function(data) {
@@ -93,7 +95,7 @@ var CommentWithDelete = React.createClass({
       <div className="comment">
         <p>{this.props.comment.text}</p>
         <p>Vote: {this.state.vote}</p>
-        <VoteButton comment={this.props.comment} onVote={this.handleVote} />
+        <VoteButton form={this.props.form} comment={this.props.comment} onVote={this.handleVote} />
         <CommentDeleteButton comment={this.props.comment} form={this.props.form} onDelete={this.props.onDelete} />
       </div>
     )
