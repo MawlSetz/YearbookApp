@@ -17,8 +17,10 @@
 				  vote: <%= p.vote %><br><br>
 				<% end %>
 			<h2>Recent Tweets </h2>
+			<div id="twitter-container">
 			<%= react_component("TwitterContainer", {:controller => @controller.to_json}) %>
-			<br></br>
+			</div>
+		
 			<%= react_component("UserSearchContainer", {:users => @users.to_json}, id: "user-search-container") %>
 		</div>
 		<!-- profile for individual user -->

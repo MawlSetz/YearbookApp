@@ -94,12 +94,12 @@ var UserInfo = React.createClass({
   render: function() {
     return (
       <div>
+        <div id="picture">
+          <img id="pic" src={this.props.user.picture} />
+        </div>
         <div id="name">
           <UpdateButton user={this.props.user} form={this.props.form} session={this.props.session} onUpdateButtonSubmit={this.props.onUpdateButtonSubmit} />
           <h1>{this.props.user.first} {this.props.user.last}</h1>
-        </div>
-        <div id="picture">
-          <img id="pic" src={this.props.user.picture} />
         </div>
         <div id="basic-info">
           <h3>{this.props.user.email}</h3>
