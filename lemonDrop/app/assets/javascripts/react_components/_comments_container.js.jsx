@@ -137,7 +137,7 @@ var CommentDeleteButton = React.createClass({
 			<form ref="form" action={path} method="POST" onSubmit={this.handleDelete}>
 				<input type="hidden" name={this.props.form.csrf_param} value={this.props.form.csrf_token} />
 				<input type="hidden" name="_method" value="delete" />
-				<button className="delete-button">Delete</button>
+				<button className="delete-button btn btn-sm btn-danger">Delete</button>
 			</form>
 		);
 	}
@@ -158,7 +158,7 @@ var CommentField = React.createClass({
           <input type="hidden" name={this.props.form.csrf_param} value={this.props.form.csrf_token} />
           <input type="hidden" name="comment[post_id]" value={this.props.post.id} />
           <textarea id="comment-area" type="post-text" name="comment[text]" placeholder="Comment" />
-          <button className="comment-button">Comment</button>
+          <button className="btn btn-sm btn-success">Comment</button>
         </form>
       </div>
     )

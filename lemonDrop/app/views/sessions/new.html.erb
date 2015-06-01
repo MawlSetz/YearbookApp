@@ -45,7 +45,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <button type="button" class="btn btn-action btn-md" data-toggle="modal" data-target="#myModal">
+            <button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#myModal">
   				Already a Member?
 			       </button>
           </ul>
@@ -93,7 +93,7 @@
 <!-- 			<%= f.label :password_confirmation %> -->
 			<%= f.password_field :password_confirmation, placeholder: 'Password Confirmation' %>
 			<br><br>
-			<%= f.submit %>
+      <%= f.submit "Sign Up", :class => "btn btn-md btn-success"%>
 		<% end %>
 	</div>				
 				</div><!-- /col-lg-6 -->
@@ -142,7 +142,7 @@
 		<hr>
 		<div class="row centered">
 			<div class="col-lg-6 col-lg-offset-3">
-				  <a href="#" class="back-to-top"><button class="btn btn-primary btn-lg">Sign Up!</button></a>				
+				  <a href="#" class="back-to-top"><button class="btn btn-default btn-lg">Sign Up!</button></a>				
 			</div>
 		</div><!-- /row -->
 		<hr>
@@ -171,13 +171,13 @@
 				  <!-- Wrapper for slides -->
 				  <div class="carousel-inner">
 				    <div class="item active">
-				      <img src="assets/images/p01.png" alt="">
+				      <img src="/assets/carousel-1.png" alt="">
 				    </div>
 				    <div class="item">
-				      <img src="assets/images/p02.png" alt="">
+				      <img src="/assets/carousel-2.png" alt="">
 				    </div>
 				    <div class="item">
-				      <img src="assets/images/p03.png" alt="">
+				      <img src="/assets/carousel-3.png" alt="">
 				    </div>
 				  </div>
 				</div>			
@@ -257,14 +257,14 @@
         <h4>Please enter your email and password</h4>
 <p style="color: red"><%= flash[:error] %></p>
 <form action="/session" method="POST">
-	<div>
+	<div class="form-group">
 		<label for="email">Email:</label>
-		<input name="email">
+		<input class="form-control" name="email">
 	</div>
-	<div>
+	<div class="form-group">
 		<label for="password">Password:</label>
 		<!-- use of authenticity token to protect user password -->
-		<input name="password" type="password">
+		<input class="form-control" name="password" type="password">
       	<input name="authenticity_token" value="<%= form_authenticity_token() %>" type="hidden">
   	</div>
       	<br><br>
