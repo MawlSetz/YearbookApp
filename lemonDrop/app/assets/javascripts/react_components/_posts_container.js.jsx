@@ -120,7 +120,7 @@ var Posts = React.createClass({
         <p className="post_content">{this.props.post.post.content}</p>
         <p className="post_tags">Tag: {this.props.post.post.tags}</p>
 			</div>
-      <CommentsList users={this.props.users} session={this.props.session} post={this.props.post.post} comments={this.state.comments} form={this.props.form} />
+      <CommentsList users={this.props.users} session={this.props.session} post={this.props.post.post} comments={this.props.post.comments} form={this.props.form} />
 		</div>
 		);
 	}
