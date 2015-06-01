@@ -76,7 +76,7 @@ var PostDeleteForm = React.createClass({
 			<form ref="form" action={path} method="POST" onSubmit={this.handleDelete}>
 				<input type="hidden" name={this.props.form.csrf_param} value={this.props.form.csrf_token} />
 				<input type="hidden" name="_method" value="delete" />
-				<button className="button delete-button">Delete</button>
+				<button className="button delete-button btn btn-sm btn-danger">Delete</button>
 			</form>
 		);
 	}
@@ -94,6 +94,7 @@ var Posts = React.createClass({
       url: path,
       type: "PUT",
       success: function(data) {
+        this.props.post.comments = data.comments
         this.setState({vote: data.vote, comments: data.comments});
       }.bind(this)
     })
@@ -138,6 +139,7 @@ var PostsWithDelete = React.createClass({
       url: path,
       type: "PUT",
       success: function(data) {
+        this.props.post.comments = data.comments
         this.setState({vote: data.vote, comments: data.comments});
       }.bind(this)
     })

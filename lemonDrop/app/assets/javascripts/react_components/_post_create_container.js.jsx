@@ -38,7 +38,7 @@ var PostForm = React.createClass ({
       <textarea id="post-text-form" type="post-text" name="text" name="post[content]" placeholder="Post" />
       <div className="divider"></div>
       <input id="post-tag-form" type="post-tags" name="text" name="post[tags]" placeholder="Add Tags" />
-      <button className="button create-button">Create</button>
+      <button className="button create-button btn btn-small btn-success">Create</button>
       </form>
     );
   }

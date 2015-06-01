@@ -36,25 +36,60 @@ header.navbar-inverse {
   border-color: transparent;
   float: right;
 }
+#logoName {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 40px;
+    position: relative;
+    top: 15px;
+    left: 14px;
+    bottom: 30px;
+    color: #d3d3d3;
+}
+#logoName:hover {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 40px;
+    position: relative;
+    top: 15px;
+    left: 14px;
+    bottom: 30px;
+    color: #fbd334;
+}
 img.icon{
   float: left;
   width: 70px;
   position: relative;
-  bottom: 13px;
+  bottom: 3px;
 }
-a.header-button{
+.nav-ul {
+  position: relative;
+  top: -20px;
+  left: 860px;
+  width: 350px;
+  a {
+    font-size: 18px;
+    padding: 10px 10px 10px 10px;
+    color: #FFF;
+  }
+  a:hover {
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 10px 10px 10px;
+    color: #fbd334;
+  }
+}
+li{
   display: inline;
   padding-top: 10px;
   padding-bottom: 10px;
-  padding-left: 50%;
-  
 }
+
 
 
 #user-search {
   display: inline-block;
 }
-
 
 
 #searches {

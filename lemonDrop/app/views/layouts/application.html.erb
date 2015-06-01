@@ -5,6 +5,8 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Custom styles for this template -->
+  <link href="assets/stylesheets/main.css" rel="stylesheet">
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -15,10 +17,25 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
 
         <div class="nav navbar-nav">
-          <img class="icon" src="assets/LemonIcon_Final.png">
+          <img class="icon" src="/assets/LemonIcon_Final.png">
+<<<<<<< HEAD
+          <p id="logoName"> LemonDrop </p>
+          <ul class="nav-ul">
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/users/<%=current_user.id%>">Profile</a>
+            </li>
+            <li>
+              <%= link_to "Logout", session_path, method: :delete %>
+            </li>
+          </ul>
+=======
           <a href="/" class="header-button">HOME</a>
           <a href="/users/<%=current_user.id%>" class="header-button">Profile</a>
           <%= link_to "logout", session_path, method: :delete, class: "header-button" %>
+>>>>>>> 1ef5a0f9f30a12dbffb943076a5185b3aeb2d432
         </div>
 
 

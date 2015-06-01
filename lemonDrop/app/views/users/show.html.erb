@@ -1,31 +1,33 @@
 <body id="color">
 <!-- COMPUTER SCREEN SET UP -->
-    <!-- functionality showing alert message if user has not filled in bio  -->
-    <% if @user.bio.blank? %>
-        <p>Welcome to LemonDrop. Please don't forget to fill out your profile so you can stay connected.</p>
-    <% end %>
-    <div id="main-container" class="container hidden-xs hidden-sm">
-      <div class="row">
-        <div class="col-md-3" id="searches">
-            <!-- Posts most recent activity in feed on group page -->
-            <h2>Latest Post</h2>
-            <!-- erb for loop -->
-                <% @posts.each do |p| %>
-                  <i>Posted <%= time_ago_in_words(p.created_at) %> ago.</i><br>
-                  <%= p.content %><br>
-                  <%= p.tags %><br>
-                  vote: <%= p.vote %><br><br>
-                <% end %>
-            <h2>Recent Tweets </h2>
-            <div id="twitter-container">
-            <%= react_component("TwitterContainer", {:controller => @controller.to_json}) %>
-            </div>
-            <%= react_component("UserSearchContainer", {:users => @users.to_json}, id: "user-search-container") %>
-        </div>
-        <!-- profile for individual user -->
-            <div class="col-md-3" id="profile-container">
-                <%= react_component("ProfileContainer", {:controller => @controller.to_json}) %>
-            </div>
-        </div>
-    </div> 
+
+	<!-- functionality showing alert message if user has not filled in bio  -->
+	<% if @user.bio.blank? %>
+		<p>Welcome to LemonDrop. Please don't forget to fill out your profile so you can stay connected.</p>
+	<% end %>
+	<div id="main-container" class="container">
+	  <div class="row">
+	    <div class="col-md-3" id="searches">
+	    	<!-- Posts most recent activity in feed on group page -->
+			<h2>Latest Post</h2>
+			<!-- erb for loop -->
+				<% @posts.each do |p| %>
+				  <i>Posted <%= time_ago_in_words(p.created_at) %> ago.</i><br>
+				  <%= p.content %><br>
+				  <%= p.tags %><br>
+				  vote: <%= p.vote %><br><br>
+				<% end %>
+			<h2>Recent Tweets </h2>
+			<div id="twitter-container">
+			<%= react_component("TwitterContainer", {:controller => @controller.to_json}) %>
+			</div>
+		
+			<%= react_component("UserSearchContainer", {:users => @users.to_json}, id: "user-search-container") %>
+		</div>
+		<!-- profile for individual user -->
+			<div class="col-md-3" id="profile-container">
+				<%= react_component("ProfileContainer", {:controller => @controller.to_json}) %>
+			</div>
+		</div>
+	</div> 
 </body>
