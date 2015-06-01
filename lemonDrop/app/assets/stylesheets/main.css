@@ -131,6 +131,7 @@ i {
 	background-position: center center;
 	min-height: 650px;
 	width: 100%;
+    padding-bottom: 50px;
 	
     -webkit-background-size: 100%;
     -moz-background-size: 100%;
@@ -197,24 +198,86 @@ body {
 }
 
 #body-color {
-    background-color: #ccc  ;
+    background-color: #fbd334;
 }
 
 .back-to-top button{
     background-color:white;
     color:black;
+    border: 0px;
 }
 .back-to-top button:hover{
-    background-color: #404040;
+    background-color: #eee;
+    color:black;
+    border: 0px;
+}
+
+.container{
     color:black;
 }
 
+i.fa.fa-heart{
+    color: #fbd334;
+}
 
+#info-text{
+    color: black;
+}
+#header-wrap {
+    /* background: url(../img/bg01.jpg) no-repeat center top; */
+    background-color: #fff;
+    margin-top: -20px;
+    padding-top:40px;
+    background-attachment: relative;
+    background-position: center center;
+    height: 470px;
+    min-height: 50px;
+    width: 100%;
+    right: 0;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.footer{
+    background-color: black;
+    color:white;
+    width: 100%;
+    min-height: 150px;
+    padding-top: 60px;
+    padding-bottom: 40px
 
+}
 
+.space {
+    padding: 200px;
+}
+#grey-body {
+    background-color: #ececec;
+    padding-top:40px;
+    background-attachment: relative;
+    background-position: center center;
+    width: 100%;
 
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
 
+     -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 
+}
+
+#circle {
+    border-radius: 100%;
+}
 
 

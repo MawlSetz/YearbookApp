@@ -37,7 +37,7 @@ var CommentsList = React.createClass({
     }.bind(this));
     return (
       <div id="comments-list">
-        <h5>Comments</h5>
+        <h5><b>Comments</b></h5>
         {commentNodes}
         <CommentField form={this.props.form} post={this.props.post} onCommentSubmit={this.handleCommentSubmit} />
       </div>
@@ -72,10 +72,12 @@ var Comment = React.createClass({
     })
     return (
       <div className="comment">
-        <p>User: {commentUser.first} {commentUser.last}</p>
+        <ul className="comment-ul">
+          <li className="comment-li comment-name"><b>{commentUser.first} {commentUser.last}</b></li>
+          <li className="comment-li"><p className="vote">Vote: {this.state.vote}</p></li>
+          <li className="comment-li"><VoteButton form={this.props.form} comment={this.props.comment} onVote={this.handleVote} /></li>
+        </ul>
         <p>{this.props.comment.text}</p>
-        <p>Vote: {this.state.vote}</p>
-        <VoteButton form={this.props.form} comment={this.props.comment} onVote={this.handleVote} />
       </div>
     )
   }
@@ -108,11 +110,13 @@ var CommentWithDelete = React.createClass({
     })
     return (
       <div className="comment">
-        <p>User: {commentUser.first} {commentUser.last}</p>
+        <ul className="comment-ul">
+          <li className="comment-li comment-name"><b>{commentUser.first} {commentUser.last}</b></li>
+          <li className="comment-li"><p className="vote">Vote: {this.state.vote}</p></li>
+          <li className="comment-li"><VoteButton form={this.props.form} comment={this.props.comment} onVote={this.handleVote} /></li>
+          <li className="comment-li"><CommentDeleteButton comment={this.props.comment} form={this.props.form} onDelete={this.props.onDelete} /></li>
+        </ul>
         <p>{this.props.comment.text}</p>
-        <p>Vote: {this.state.vote}</p>
-        <VoteButton form={this.props.form} comment={this.props.comment} onVote={this.handleVote} />
-        <CommentDeleteButton comment={this.props.comment} form={this.props.form} onDelete={this.props.onDelete} />
       </div>
     )
   }
@@ -131,7 +135,7 @@ var CommentDeleteButton = React.createClass({
 			<form ref="form" action={path} method="POST" onSubmit={this.handleDelete}>
 				<input type="hidden" name={this.props.form.csrf_param} value={this.props.form.csrf_token} />
 				<input type="hidden" name="_method" value="delete" />
-				<button>Delete</button>
+				<button className="delete-button">Delete</button>
 			</form>
 		);
 	}
@@ -151,8 +155,8 @@ var CommentField = React.createClass({
         <form action={this.props.form.action} method="post" onSubmit={this.handleSubmit} >
           <input type="hidden" name={this.props.form.csrf_param} value={this.props.form.csrf_token} />
           <input type="hidden" name="comment[post_id]" value={this.props.post.id} />
-          <input type="post-text" name="comment[text]" placeholder="Post" />
-          <button>Comment</button>
+          <textarea id="comment-area" type="post-text" name="comment[text]" placeholder="Comment" />
+          <button className="comment-button">Comment</button>
         </form>
       </div>
     )

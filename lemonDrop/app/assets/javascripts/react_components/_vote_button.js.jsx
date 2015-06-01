@@ -17,14 +17,14 @@ var VoteButton = React.createClass({
         return (
           <form onSubmit={this.handleVote}>
             <input type="hidden" name={this.props.form.csrf_param} value={this.props.form.csrf_token} />
-            <button>DownVote</button>
+            <button className="vote-button vote">DownVote</button>
           </form>
         )
       } else {
         return (
           <form onSubmit={this.handleVote}>
             <input type="hidden" name={this.props.form.csrf_param} value={this.props.form.csrf_token} />
-            <button>UpVote</button>
+            <button className="vote-button vote">UpVote</button>
           </form>
         )
       }
@@ -33,14 +33,14 @@ var VoteButton = React.createClass({
         return (
           <form onSubmit={this.handleVote}>
             <input type="hidden" name={this.props.form.csrf_param} value={this.props.form.csrf_token} />
-            <button>DownVote</button>
+            <button className="vote-button vote">DownVote</button>
           </form>
         )
       } else {
         return (
           <form onSubmit={this.handleVote}>
             <input type="hidden" name={this.props.form.csrf_param} value={this.props.form.csrf_token} />
-            <button>UpVote</button>
+            <button className="vote-button vote">UpVote</button>
           </form>
         )
       }

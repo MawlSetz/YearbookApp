@@ -76,7 +76,7 @@ var PostDeleteForm = React.createClass({
 			<form ref="form" action={path} method="POST" onSubmit={this.handleDelete}>
 				<input type="hidden" name={this.props.form.csrf_param} value={this.props.form.csrf_token} />
 				<input type="hidden" name="_method" value="delete" />
-				<button>Delete</button>
+				<button className="button delete-button">Delete</button>
 			</form>
 		);
 	}
@@ -110,14 +110,15 @@ var Posts = React.createClass({
 		return (
 		<div className="each-post">
 			<div className="img_vote posts_stuff">
-        <img src={postUser.picture} />
-				<p className="user_post_image">User: {postUser.first} {postUser.last}</p>
+        <img className="user_post_image" src={postUser.picture} />
+				<b className="user-name">{postUser.first} {postUser.last}</b>
 				<p className="vote">Vote: {this.state.vote}</p>
-			</div>
-			<div className="content_tag posts_stuff">
-				<p className="post_content">{this.props.post.post.content}</p>
-				<p className="post_tags">Tag: {this.props.post.post.tags}</p>
         <VoteButton post={this.props.post} form={this.props.form} onVote={this.handleVote} />
+      </div>
+      <div className="content_tag posts_stuff">
+        <i className="post-time">Created at: {this.props.post.post.created_at}</i>
+        <p className="post_content">{this.props.post.post.content}</p>
+        <p className="post_tags">Tag: {this.props.post.post.tags}</p>
 			</div>
       <CommentsList users={this.props.users} session={this.props.session} post={this.props.post.post} comments={this.state.comments} form={this.props.form} />
 		</div>
@@ -153,14 +154,15 @@ var PostsWithDelete = React.createClass({
 		return (
 		<div className="each-post">
 			<div className="img_vote posts_stuff">
-        <img src={postUser.picture} />
-				<p className="user_post_image">User: {postUser.first} {postUser.last}</p>
+        <img className="user_post_image" src={postUser.picture} />
+				<b className="user-name">{postUser.first} {postUser.last}</b>
 				<p className="vote">Vote: {this.state.vote}</p>
-			</div>
-			<div className="content_tag posts_stuff">
-				<p className="post_content">{this.props.post.post.content}</p>
-				<p className="post_tags">Tag: {this.props.post.post.tags}</p>
         <VoteButton post={this.props.post} form={this.props.form} onVote={this.handleVote} />
+      </div>
+      <div className="content_tag posts_stuff">
+        <i className="post-time">Created at: {this.props.post.post.created_at}</i>
+        <p className="post_content">{this.props.post.post.content}</p>
+        <p className="post_tags">Tag: {this.props.post.post.tags}</p>
 			</div>
 			<PostDeleteForm post={this.props.post} form={this.props.form} onDelete={this.props.onDelete} />
       <CommentsList users={this.props.users} session={this.props.session} form={this.props.form} post={this.props.post.post} comments={this.state.comments} form={this.props.form} />
