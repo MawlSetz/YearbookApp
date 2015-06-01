@@ -1,4 +1,5 @@
 var VoteButton = React.createClass({
+  // handleVote calls the vote function passed down from either the post or the comment element
   handleVote: function(event) {
     event.preventDefault()
     if ($(event.target).children("button").text() === "UpVote") {
@@ -12,7 +13,6 @@ var VoteButton = React.createClass({
 
   render: function() {
     if (this.props.comment) {
-      console.log(this.props.comment.user_voted)
       if (this.props.comment.user_voted) {
         return (
           <form onSubmit={this.handleVote}>
@@ -29,7 +29,6 @@ var VoteButton = React.createClass({
         )
       }
     } else {
-      console.log(this.props.post.post.user_voted)
       if (this.props.post.post.user_voted) {
         return (
           <form onSubmit={this.handleVote}>

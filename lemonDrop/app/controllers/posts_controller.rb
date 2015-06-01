@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   def index
     if request.xhr?
       @posts = Post.where("tags LIKE ?", "%#{params[:search]}%").map do |post|
+        # Grab comments for post, check to see how the user has voted on this comment
         comments = Comment.where(post_id: post[:id]).map do |comment|
           comment_voted = false
           comment_votes = CommentsVote.where(comment_id: comment[:id], vote: true)
@@ -88,6 +89,7 @@ class PostsController < ApplicationController
   def update
     @post_votes = PostsVote.where(post_id: params[:id])
     total_votes = PostsVote.where(post_id: params[:id], vote: true).length
+    # if a true vote in the table exists for this user-post relationship, exists will be set to true
     exists = false
     @post_votes.each do |vote|
       if vote[:user_id] == session[:user_id] && vote[:post_id] == params[:id].to_i && vote[:vote]
@@ -114,14 +116,17 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    puts "XXXXXXXXXXXX"
+    puts params
+    puts session[:user_id]
     @post = Post.find(params[:id])
     if session[:user_id] == @post.user_id
       @post.destroy
       @posts = Post.all.map do |post|
         {post: post, comments: post.comments.all}
       end
-      render :json => {:posts => @posts}
     end
+    render :json => {:posts => @posts}
   end
 
 # protects things being entered into the database

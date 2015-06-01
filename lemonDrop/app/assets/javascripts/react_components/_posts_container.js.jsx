@@ -66,14 +66,15 @@ var PostDeleteForm = React.createClass({
 	handleDelete: function(event) {
 		event.preventDefault();
 		var formData = $(this.refs.form.getDOMNode()).serialize()
-		this.props.onDelete(formData, this.refs.form.props.action);
+    var action = $(event.target).attr("action")
+    this.props.onDelete(formData, action);
 	},
 
 	render: function() {
 		var path = "/posts/"+ this.props.post.post.id
 		return (
 			<form ref="form" action={path} method="POST" onSubmit={this.handleDelete}>
-				<input type="hidden" name={this.props.post.csrf_param} value={this.props.post.csrf_token} />
+				<input type="hidden" name={this.props.form.csrf_param} value={this.props.form.csrf_token} />
 				<input type="hidden" name="_method" value="delete" />
 				<button>Delete</button>
 			</form>
@@ -145,7 +146,7 @@ var PostsWithDelete = React.createClass({
 				<p className="post_tags">Tag: {this.props.post.post.tags}</p>
         <VoteButton post={this.props.post} form={this.props.form} onVote={this.handleVote} />
 			</div>
-			<PostDeleteForm post={this.props.post} onDelete={this.props.onDelete} />
+			<PostDeleteForm post={this.props.post} form={this.props.form} onDelete={this.props.onDelete} />
       <CommentsList session={this.props.session} form={this.props.form} post={this.props.post.post} comments={this.state.comments} form={this.props.form} />
 		</div>
 		);
