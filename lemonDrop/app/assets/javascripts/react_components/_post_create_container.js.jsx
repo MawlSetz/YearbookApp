@@ -28,7 +28,7 @@ var PostForm = React.createClass ({
     var formData = $(this.getDOMNode()).serialize();
     this.props.onPostSubmit(formData, this.props.form.action);
     $(event.target).children().eq(1).val("");
-    $(event.target).children().eq(2).val("")
+    $(event.target).children().eq(3).val("")
   },
 
   render: function() {
