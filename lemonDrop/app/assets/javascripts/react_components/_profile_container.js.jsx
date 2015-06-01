@@ -133,11 +133,6 @@ var UserFields = React.createClass({
   handleShowField: function(event) {
     event.preventDefault();
     var text = $(event.target[0]).text()
-    if (text === "Edit") {
-      $(event.target[0]).text("Cancel");
-    } else {
-      $(event.target[0]).text("Edit");
-    }
     $(event.target).next().toggle()
   },
 
@@ -148,7 +143,7 @@ var UserFields = React.createClass({
         <OkayButton onOkayPress={this.props.onOkayPress} />
         <p>{user.first} {user.last}</p>
         <form onSubmit={this.handleShowField}>
-          <button>Edit</button>
+          <button>Edit Your Name</button>
         </form>
         <div id="name-form" className="form" style={{display: "none"}}>
           <form action={this.props.action} onSubmit={this.onUpdate}>
@@ -160,7 +155,7 @@ var UserFields = React.createClass({
         </div>
         <img src={user.picture} />
         <form onSubmit={this.handleShowField}>
-          <button>Edit</button>
+          <button>Edit Your Profile Picture</button>
         </form>
         <div id="picture-form" className="form" style={{display: "none"}} onSubmit={this.onUpdate}>
           <form action={this.props.action} onSubmit={this.onUpdate}>
@@ -171,7 +166,7 @@ var UserFields = React.createClass({
         </div>
         <p>{user.email}<br />{user.location}<br />{user.personal_link}</p>
         <form onSubmit={this.handleShowField}>
-          <button>Edit</button>
+          <button>Edit Your Personal Information</button>
         </form>
         <div id="basic-info-form" className="form" style={{display: "none"}}>
           <form action={this.props.action} onSubmit={this.onUpdate}>
@@ -184,7 +179,7 @@ var UserFields = React.createClass({
         </div>
         <p>{user.github}<br />{user.linkedin}<br />{user.facebook}<br />{user.twitter_handle}</p>
         <form onSubmit={this.handleShowField}>
-          <button>Edit</button>
+          <button>Edit Your Links</button>
         </form>
         <div id="social-form" className="form" style={{display: "none"}}>
           <form action={this.props.action} onSubmit={this.onUpdate}>
@@ -198,7 +193,7 @@ var UserFields = React.createClass({
         </div>
         <p>{user.bio}</p>
         <form onSubmit={this.handleShowField}>
-          <button>Edit</button>
+          <button>Edit Your Bio</button>
         </form>
         <div id="bio-form" className="form" style={{display: "none"}}>
           <form action={this.props.action} onSubmit={this.onUpdate}>
@@ -209,7 +204,7 @@ var UserFields = React.createClass({
         </div>
         <p>{user.quote}</p>
         <form onSubmit={this.handleShowField}>
-          <button>Edit</button>
+          <button>Edit Your Quote</button>
         </form>
         <div id="quote-form" className="form" style={{display: "none"}}>
           <form action={this.props.action} onSubmit={this.onUpdate}>
@@ -220,13 +215,13 @@ var UserFields = React.createClass({
         </div>
         <p>{user.skill_primary} {user.skill_secondary}</p>
         <form onSubmit={this.handleShowField}>
-          <button>Edit</button>
+          <button>Edit Your Skills</button>
         </form>
         <div id="skills-form" className="form" style={{display: "none"}}>
           <form action={this.props.action} onSubmit={this.onUpdate}>
             <input type="hidden" name={this.props.form.csrf_param} value={this.props.form.csrf_token} />
-            <input name="user[skill_primary]" placeholder="What is your top tech skill?" />
-            <input name="user[skill_secondary]" placeholder="What is your second top tech skill?" />
+            <input name="user[skill_primary]" placeholder="Top tech skill" />
+            <input name="user[skill_secondary]" placeholder="Secondary tech skill" />
             <button>Update</button>
           </form>
         </div>
