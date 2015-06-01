@@ -257,14 +257,14 @@
         <h4>Please enter your email and password</h4>
 <p style="color: red"><%= flash[:error] %></p>
 <form action="/session" method="POST">
-	<div>
+	<div class="form-group">
 		<label for="email">Email:</label>
-		<input name="email">
+		<input class="form-control" name="email">
 	</div>
-	<div>
+	<div class="form-group">
 		<label for="password">Password:</label>
 		<!-- use of authenticity token to protect user password -->
-		<input name="password" type="password">
+		<input class="form-control" name="password" type="password">
       	<input name="authenticity_token" value="<%= form_authenticity_token() %>" type="hidden">
   	</div>
       	<br><br>
