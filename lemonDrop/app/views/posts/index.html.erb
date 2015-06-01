@@ -20,31 +20,8 @@
   </div>
 </div>
 
-<!-- MOBILE SET UP -->
-<!-- <div id="main-container" class="container hidden-md hidden-lg">
-  <ul id="myTab" class="nav nav-tabs">
-    <li class="active"><a href="#home" data-toggle="tab">Posts</a></li>
-    <li><a href="#profile" data-toggle="tab">Searches</a></li>
-  </ul>
-  <div class="tab-content">
-    <div class="row">
-      <div class="col-md-3 col-xs-12" id="searches">
-        <div id="myTabContent" class="tab-content">
-          <div class="tab-pane fade" id="profile">
-            <%= react_component("UserSearchContainer", {:users => @users.to_json}, id: "user-search-container") %>
-            <%= react_component("SkillSearchContainer", {}, id: "skill-search") %>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-9 col-xs-12" id="show-posts">
-        <div class="tab-pane fade in active" id="home">
-          <%= react_component("PostsContainer", {:controller => @controller.to_json}, id: "posts-container") %>
-        </div>
-      </div> 
-    </div>
-  </div>
-</div> -->
 
+<!-- MOBILE SET UP -->
 <div class="bs-docs-example hidden-md hidden-lg" id="mobile">
     <ul id="myTab" class="nav nav-tabs">
       <li class="active"><a href="#post-tab" data-toggle="tab">Posts</a></li>
@@ -53,12 +30,12 @@
 
     <div id="myTabContent" class="tab-content">
       <div class="tab-pane fade in active" id="post-tab">
-      <div class="col-xs-12" id="show-posts">
+      <div class="col-xs-12 col-sm-12" id="show-posts">
         <%= react_component("PostsContainer", {:controller => @controller.to_json}, id: "posts-container") %>
       </div>
       </div>
       <div class="tab-pane fade" id="search-tab">
-        <div class="col-xs-12" id="searches">
+        <div class="col-xs-12 col-12-sm" id="searches">
           <%= react_component("UserSearchContainer", {:users => @users.to_json}, id: "user-search-container") %>
           <%= react_component("SkillSearchContainer", {}, id: "skill-search") %>
         </div>
