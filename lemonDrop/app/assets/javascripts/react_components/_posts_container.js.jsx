@@ -30,9 +30,11 @@ var PostsContainer = React.createClass ({
 	render: function() {
 		return (
 			<div className = "posts">
-				<PostTagSearchContainer onTagSearch={this.handleTagSearch} />
-				<PostCreateContainer form={this.state.form} posts={this.state.posts} onUpdate={this.onUpdate} />
-				<PostInfo posts={this.state.posts} session={this.state.session} form={this.state.form} onDelete={this.handlePostDelete} />
+        <div className="form-field">
+				  <PostTagSearchContainer onTagSearch={this.handleTagSearch} />
+				  <PostCreateContainer form={this.state.form} posts={this.state.posts} onUpdate={this.onUpdate} />
+        </div>
+				<PostInfo users={this.state.users} posts={this.state.posts} session={this.state.session} form={this.state.form} onDelete={this.handlePostDelete} />
 			</div>
 		)
 	},
@@ -46,9 +48,9 @@ var PostInfo = React.createClass({
 	render: function() {
 		var postNodes = this.props.posts.map(function(post){
 			if (this.props.session == post.post.user_id) {
-				return <PostsWithDelete post={post} form={this.props.form} session={this.props.session} onDelete={this.props.onDelete} />
+				return <PostsWithDelete users={this.props.users} post={post} form={this.props.form} session={this.props.session} onDelete={this.props.onDelete} />
 			} else {
-				return <Posts post={post} session={this.props.session} form={this.props.form} />
+				return <Posts users={this.props.users} post={post} session={this.props.session} form={this.props.form} />
 			}
 		}.bind(this));
 		return (
@@ -64,132 +66,12 @@ var PostDeleteForm = React.createClass({
 	handleDelete: function(event) {
 		event.preventDefault();
 		var formData = $(this.refs.form.getDOMNode()).serialize()
-		this.props.onDelete(formData, this.refs.form.props.action);
+    var action = $(event.target).attr("action")
+    this.props.onDelete(formData, action);
 	},
 
 	render: function() {
 		var path = "/posts/"+ this.props.post.post.id
-		return (
-			<form ref="form" action={path} method="POST" onSubmit={this.handleDelete}>
-				<input type="hidden" name={this.props.post.csrf_param} value={this.props.post.csrf_token} />
-				<input type="hidden" name="_method" value="delete" />
-				<button>Delete</button>
-			</form>
-		);
-	}
-});
-// renders individual posts
-var Posts = React.createClass({
-	render: function() {
-		return (
-		<div className="each-post">
-			<div className="img_vote posts_stuff">
-				<p className="user_post_image">User: {this.props.post.post.user_id}</p>
-				<p className="vote">Vote: {this.props.post.vote}</p>
-			</div>
-			<div className="content_tag posts_stuff">
-				<p className="post_content">{this.props.post.post.content}</p>
-				<p className="post_tags">Tag: {this.props.post.post.tags}</p>
-			</div>
-      <CommentsList session={this.props.session} post={this.props.post.post} comments={this.props.post.comments} form={this.props.form} />
-		</div>
-		);
-	}
-});
-// when logged in, able to delete
-var PostsWithDelete = React.createClass({
-	render: function() {
-		return (
-		<div className="each-post">
-			<div className="img_vote posts_stuff">
-				<p className="user_post_image">User: {this.props.post.post.user_id}</p>
-				<p className="vote">Vote: {this.props.post.post.vote}</p>
-			</div>
-			<div className="content_tag posts_stuff">
-				<p className="post_content">{this.props.post.post.content}</p>
-				<p className="post_tags">Tag: {this.props.post.post.tags}</p>
-			</div>
-			<PostDeleteForm post={this.props.post} onDelete={this.props.onDelete} />
-      <CommentsList session={this.props.session} post={this.props.post.post} comments={this.props.post.comments} form={this.props.form} />
-		</div>
-		);
-	}
-});
-
-var CommentsList = React.createClass({
-  getInitialState: function() {
-    return {comments: this.props.comments}
-  },
-
-  handleCommentDelete: function(formData, action) {
-    $.ajax({
-			data: formData,
-			url: action,
-			type: "DELETE",
-			success: function(data){
-				this.setState({comments: data.comments})
-			}.bind(this)
-		});
-  },
-
-  handleCommentSubmit: function(formData, action) {
-    $.ajax({
-      data: formData,
-      url: "/comments",
-      type: "POST",
-      success: function(data){
-        this.setState({comments: data.comments});
-      }.bind(this)
-    });
-  },
-
-  render: function() {
-    var commentNodes = this.state.comments.map(function(comment) {
-      if (this.props.session == comment.user_id) {
-        return <CommentWithDelete comment={comment} form={this.props.form} onDelete={this.handleCommentDelete} />
-      } else {
-        return <Comment comment={comment} />
-      }
-    }.bind(this));
-    return (
-      <div id="comments-list">
-        {commentNodes}
-        <CommentField form={this.props.form} post={this.props.post} onCommentSubmit={this.handleCommentSubmit} />
-      </div>
-    )
-  }
-});
-
-var Comment = React.createClass({
-  render: function() {
-    return (
-      <div className="comment">
-        <p>{this.props.comment.text}</p>
-      </div>
-    )
-  }
-});
-
-var CommentWithDelete = React.createClass({
-  render: function() {
-    return (
-      <div className="comment">
-        <p>{this.props.comment.text}</p>
-        <CommentDeleteButton comment={this.props.comment} form={this.props.form} onDelete={this.props.onDelete} />
-      </div>
-    )
-  }
-});
-
-var CommentDeleteButton = React.createClass({
-	handleDelete: function(event) {
-		event.preventDefault();
-		var formData = $(this.refs.form.getDOMNode()).serialize()
-		this.props.onDelete(formData, this.refs.form.props.action);
-	},
-
-	render: function() {
-		var path = "/comments/"+ this.props.comment.id
 		return (
 			<form ref="form" action={path} method="POST" onSubmit={this.handleDelete}>
 				<input type="hidden" name={this.props.form.csrf_param} value={this.props.form.csrf_token} />
@@ -198,27 +80,91 @@ var CommentDeleteButton = React.createClass({
 			</form>
 		);
 	}
-})
-
-var CommentField = React.createClass({
-  handleSubmit: function(event) {
-    event.preventDefault();
-    var formData = $(this.getDOMNode()).children().eq(1).serialize()
-    this.props.onCommentSubmit(formData, this.props.form.action);
-    $(event.target).children().eq(2).val("");
+});
+// renders individual posts
+var Posts = React.createClass({
+  getInitialState: function() {
+    return {vote: this.props.post.post.vote, comments: this.props.post.comments}
   },
 
-  render: function() {
-    return (
-      <div id="comment-field">
-        <h5>Comments</h5>
-        <form action={this.props.form.action} method="post" onSubmit={this.handleSubmit} >
-          <input type="hidden" name={this.props.form.csrf_param} value={this.props.form.csrf_token} />
-          <input type="hidden" name="comment[post_id]" value={this.props.post.id} />
-          <input type="post-text" name="comment[text]" placeholder="Post" />
-          <button>Comment</button>
-        </form>
-      </div>
-    )
-  }
+  handleVote: function(formData) {
+    var path = "/posts/" + this.props.post.post.id
+    $.ajax({
+      data: formData,
+      url: path,
+      type: "PUT",
+      success: function(data) {
+        this.setState({vote: data.vote, comments: data.comments});
+      }.bind(this)
+    })
+  },
+
+	render: function() {
+    var postUser
+    var post = this.props.post.post
+    this.props.users.forEach(function(user) {
+      if (post.user_id === user.id) {
+        postUser = user
+      }
+    })
+		return (
+		<div className="each-post">
+			<div className="img_vote posts_stuff">
+        <img src={postUser.picture} />
+				<p className="user_post_image">User: {postUser.first} {postUser.last}</p>
+				<p className="vote">Vote: {this.state.vote}</p>
+			</div>
+			<div className="content_tag posts_stuff">
+				<p className="post_content">{this.props.post.post.content}</p>
+				<p className="post_tags">Tag: {this.props.post.post.tags}</p>
+        <VoteButton post={this.props.post} form={this.props.form} onVote={this.handleVote} />
+			</div>
+      <CommentsList users={this.props.users} session={this.props.session} post={this.props.post.post} comments={this.state.comments} form={this.props.form} />
+		</div>
+		);
+	}
+});
+// when logged in, able to delete
+var PostsWithDelete = React.createClass({
+   getInitialState: function() {
+    return {vote: this.props.post.post.vote, comments: this.props.post.comments}
+  },
+
+  handleVote: function(formData) {
+    var path = "/posts/" + this.props.post.post.id
+    $.ajax({
+      data: formData,
+      url: path,
+      type: "PUT",
+      success: function(data) {
+        this.setState({vote: data.vote, comments: data.comments});
+      }.bind(this)
+    })
+  },
+
+	render: function() {
+    var postUser
+    var post = this.props.post.post
+    this.props.users.forEach(function(user) {
+      if (post.user_id === user.id) {
+        postUser = user
+      }
+    })
+		return (
+		<div className="each-post">
+			<div className="img_vote posts_stuff">
+        <img src={postUser.picture} />
+				<p className="user_post_image">User: {postUser.first} {postUser.last}</p>
+				<p className="vote">Vote: {this.state.vote}</p>
+			</div>
+			<div className="content_tag posts_stuff">
+				<p className="post_content">{this.props.post.post.content}</p>
+				<p className="post_tags">Tag: {this.props.post.post.tags}</p>
+        <VoteButton post={this.props.post} form={this.props.form} onVote={this.handleVote} />
+			</div>
+			<PostDeleteForm post={this.props.post} form={this.props.form} onDelete={this.props.onDelete} />
+      <CommentsList users={this.props.users} session={this.props.session} form={this.props.form} post={this.props.post.post} comments={this.state.comments} form={this.props.form} />
+		</div>
+		);
+	}
 });

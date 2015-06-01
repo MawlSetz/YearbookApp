@@ -35,9 +35,10 @@ var PostForm = React.createClass ({
     return (
       <form action={this.props.form.action} method="post" onSubmit={this.handleSubmit} >
       <input type="hidden" name={this.props.form.csrf_param} value={this.props.form.csrf_token} />
-      <input type="post-text" name="text" name="post[content]" placeholder="Post" />
-      <input type="post-tags" name="text" name="post[tags]" placeholder="Tags" />
-      <button>Create</button>
+      <textarea id="post-text-form" type="post-text" name="text" name="post[content]" placeholder="Post" />
+      <div className="divider"></div>
+      <input id="post-tag-form" type="post-tags" name="text" name="post[tags]" placeholder="Tags" />
+      <button className="button create-button">Create</button>
       </form>
     );
   }
