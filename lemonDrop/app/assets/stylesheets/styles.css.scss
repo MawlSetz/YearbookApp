@@ -119,10 +119,8 @@ a.header-button{
   border: none;
   width: 78%;
   height: 80px;
+  resize: none;
 }
-.create-button {
-    bottom: 35px;
-  }
 .divider {
   display: inline-block;
   border-left: 1px solid #eee;
@@ -130,8 +128,11 @@ a.header-button{
   height: 77px;
 
 }
+
 #post-tag-form {
   float: right;
+  position: relative;
+  bottom: 0px;
   border: none;
   box-shadow: none;
   width: 20%;
@@ -200,6 +201,7 @@ a.header-button{
   #comment-area {
     border: none;
     width: 100%;
+    resize: none;
   }
 }
 #comments-list {
@@ -247,6 +249,8 @@ input {
   margin: 10px 1px 0 1px;
 }
 
+
+
 #mobile {
   .all-users{
   text-align: center;
@@ -275,25 +279,28 @@ input {
   }
 
   .form-field {
-    background-color: none;
   }
 
   .create-button {
     position: relative;
-    left: 270px;
+    left: 81%;
   }
 
   #post-tag-form {
     position: relative;
-    top: -84px;
+    bottom: 92px;
     padding: 0 0 0 5px;
     height: 20px;
   }
   .post_content {
     height: 160px;
+    overflow: scroll;
   }
   .posts_stuff{
     height: 80px;
+  }
+  p.post_tags {
+    padding: 5px 0 5px 0;
   }
   .user-name {
     position: relative;
@@ -304,7 +311,7 @@ input {
   }
   .content_tag {
     width: 90%;
-    margin: 0 20px 0 20px;
+    margin: 20px 20px 0 20px;
   }
 
   #comments-list {
@@ -324,6 +331,14 @@ input {
 body#color{
   background-color: #ececec;
 }
+
+
+.create-button {
+  bottom: 35px;
+  position: relative;
+  left: 92%;
+}
+
 #profile-container{
   padding-top: 40px;
   background-color: white;
@@ -379,5 +394,4 @@ body#color{
    
   }
 }
-
 
