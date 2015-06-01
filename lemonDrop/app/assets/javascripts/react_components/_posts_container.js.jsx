@@ -34,7 +34,7 @@ var PostsContainer = React.createClass ({
 				  <PostTagSearchContainer onTagSearch={this.handleTagSearch} />
 				  <PostCreateContainer form={this.state.form} posts={this.state.posts} onUpdate={this.onUpdate} />
         </div>
-				<PostInfo posts={this.state.posts} session={this.state.session} form={this.state.form} onDelete={this.handlePostDelete} />
+				<PostInfo users={this.state.users} posts={this.state.posts} session={this.state.session} form={this.state.form} onDelete={this.handlePostDelete} />
 			</div>
 		)
 	},
@@ -48,9 +48,9 @@ var PostInfo = React.createClass({
 	render: function() {
 		var postNodes = this.props.posts.map(function(post){
 			if (this.props.session == post.post.user_id) {
-				return <PostsWithDelete post={post} form={this.props.form} session={this.props.session} onDelete={this.props.onDelete} />
+				return <PostsWithDelete users={this.props.users} post={post} form={this.props.form} session={this.props.session} onDelete={this.props.onDelete} />
 			} else {
-				return <Posts post={post} session={this.props.session} form={this.props.form} />
+				return <Posts users={this.props.users} post={post} session={this.props.session} form={this.props.form} />
 			}
 		}.bind(this));
 		return (
@@ -100,10 +100,18 @@ var Posts = React.createClass({
   },
 
 	render: function() {
+    var postUser
+    var post = this.props.post.post
+    this.props.users.forEach(function(user) {
+      if (post.user_id === user.id) {
+        postUser = user
+      }
+    })
 		return (
 		<div className="each-post">
 			<div className="img_vote posts_stuff">
-				<p className="user_post_image">User: {this.props.post.post.user_id}</p>
+        <img src={postUser.picture} />
+				<p className="user_post_image">User: {postUser.first} {postUser.last}</p>
 				<p className="vote">Vote: {this.state.vote}</p>
 			</div>
 			<div className="content_tag posts_stuff">
@@ -111,7 +119,7 @@ var Posts = React.createClass({
 				<p className="post_tags">Tag: {this.props.post.post.tags}</p>
         <VoteButton post={this.props.post} form={this.props.form} onVote={this.handleVote} />
 			</div>
-      <CommentsList session={this.props.session} post={this.props.post.post} comments={this.state.comments} form={this.props.form} />
+      <CommentsList users={this.props.users} session={this.props.session} post={this.props.post.post} comments={this.state.comments} form={this.props.form} />
 		</div>
 		);
 	}
@@ -135,10 +143,18 @@ var PostsWithDelete = React.createClass({
   },
 
 	render: function() {
+    var postUser
+    var post = this.props.post.post
+    this.props.users.forEach(function(user) {
+      if (post.user_id === user.id) {
+        postUser = user
+      }
+    })
 		return (
 		<div className="each-post">
 			<div className="img_vote posts_stuff">
-				<p className="user_post_image">User: {this.props.post.post.user_id}</p>
+        <img src={postUser.picture} />
+				<p className="user_post_image">User: {postUser.first} {postUser.last}</p>
 				<p className="vote">Vote: {this.state.vote}</p>
 			</div>
 			<div className="content_tag posts_stuff">
@@ -147,7 +163,7 @@ var PostsWithDelete = React.createClass({
         <VoteButton post={this.props.post} form={this.props.form} onVote={this.handleVote} />
 			</div>
 			<PostDeleteForm post={this.props.post} form={this.props.form} onDelete={this.props.onDelete} />
-      <CommentsList session={this.props.session} form={this.props.form} post={this.props.post.post} comments={this.state.comments} form={this.props.form} />
+      <CommentsList users={this.props.users} session={this.props.session} form={this.props.form} post={this.props.post.post} comments={this.state.comments} form={this.props.form} />
 		</div>
 		);
 	}

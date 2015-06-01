@@ -116,9 +116,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    puts "XXXXXXXXXXXX"
-    puts params
-    puts session[:user_id]
     @post = Post.find(params[:id])
     if session[:user_id] == @post.user_id
       @post.destroy

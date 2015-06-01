@@ -30,9 +30,9 @@ var CommentsList = React.createClass({
   render: function() {
     var commentNodes = this.props.comments.map(function(comment) {
       if (this.props.session === comment.user_id) {
-        return <CommentWithDelete comment={comment} form={this.props.form} onDelete={this.handleCommentDelete} />
+        return <CommentWithDelete users={this.props.users} comment={comment} form={this.props.form} onDelete={this.handleCommentDelete} />
       } else {
-        return <Comment form={this.props.form} comment={comment} />
+        return <Comment users={this.props.users} form={this.props.form} comment={comment} />
       }
     }.bind(this));
     return (
@@ -63,8 +63,16 @@ var Comment = React.createClass({
   },
 
   render: function() {
+    var commentUser
+    var comment = this.props.comment
+    this.props.users.forEach(function(user) {
+      if (comment.user_id === user.id) {
+        commentUser = user
+      }
+    })
     return (
       <div className="comment">
+        <p>User: {commentUser.first} {commentUser.last}</p>
         <p>{this.props.comment.text}</p>
         <p>Vote: {this.state.vote}</p>
         <VoteButton form={this.props.form} comment={this.props.comment} onVote={this.handleVote} />
@@ -91,8 +99,16 @@ var CommentWithDelete = React.createClass({
   },
 
   render: function() {
+    var commentUser
+    var comment = this.props.comment
+    this.props.users.forEach(function(user) {
+      if (comment.user_id === user.id) {
+        commentUser = user
+      }
+    })
     return (
       <div className="comment">
+        <p>User: {commentUser.first} {commentUser.last}</p>
         <p>{this.props.comment.text}</p>
         <p>Vote: {this.state.vote}</p>
         <VoteButton form={this.props.form} comment={this.props.comment} onVote={this.handleVote} />
